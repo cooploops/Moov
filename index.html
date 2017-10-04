@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="javascript/app.js"></script>
+</head>
+<body>
+	<h3>Please enter your Zip Code OR City,State</h3>
+	<div class="container">
+		<form>
+		  <div class="form-group">
+		    <label for="zipCode">Zip Code</label>
+		    <input type="text" class="form-control" pattern="[0-9]{5}" minlength="5" id="zipCode" placeholder="Enter Zip Code">		    
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">City</label>
+		    <input type="text" class="form-control" id="city" placeholder="Ex. Santa Monica">
+		  </div>
+		  <button type="submit" class="btn btn-primary" id="getWeather">Submit</button>
+		</form>
+	</div>
+</body>
+</html>
