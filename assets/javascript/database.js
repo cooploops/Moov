@@ -4,7 +4,7 @@
     authDomain: "moov-7f456.firebaseapp.com",
     databaseURL: "https://moov-7f456.firebaseio.com",
     projectId: "moov-7f456",
-    storageBucket: "",
+    storageBucket: "moov-7f456.appspot.com",
     messagingSenderId: "26403369152"
   };
   firebase.initializeApp(config);
