@@ -91,16 +91,33 @@
 			</div>
 		</div>
 
-	<div class="push"></div>
-	</div>
+		<div class="row weather mb-3">
+			<div class="col-sm-4">
+				<h3>Please enter your Zip Code OR City,State</h3>
+				<form>
+				  <div class="form-group">
+				    <label for="zipCode">Zip Code</label>
+				    <input type="text" class="form-control" pattern="[0-9]{5}" minlength="5" id="zipCode" placeholder="Enter Zip Code">		    
+				  </div>
+				  <div class="form-group">
+				    <label for="city">City</label>
+				    <input type="text" class="form-control" id="city" placeholder="Ex. Santa Monica">
+				  </div>
+				  <button type="submit" class="btn btn-primary" id="getWeather">Submit</button>
+				</form>
+			</div>
+			<div class="forecast col-sm-8">
+			</div>	
+		</div>
 
-	<footer>
-		<div class="container-fluid">	
+	<footer class="row justify-content-center">
+		<div class="col text-center">	
 			<h4 class="copyright">© 2017 Moov</h4>
 		</div>
 	</footer>
 	<script src="https://use.fontawesome.com/484506c304.js"></script>
 	<script type="text/javascript" src="assets/javascript/maps.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoYCrsZAGAKToAbKePx7vnrKvSmJ6zhHE&libraries=places&callback=initMap"></script>
+    <script src="assets/javascript/weather.js"></script>
 </body>
 </html>
