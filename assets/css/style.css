@@ -196,16 +196,20 @@ Can take out if group wants. Can be edited using jQuery plugin, not installed ye
   opacity : 1;
 }
 
+/*weather*/
+.weather {
+
+}
+
 /*Sticky Footer*/
 footer {
-	width: 100%;
-	line-height: 25px;
-	background: #19323C;
+	position:relative;
+	bottom:0;
+	left:0;
+	right:0;
+	height:5em;
 }
-footer,
-.push {
-	height: 110px;
-}
+
 .copyright {
 	margin-top: 2rem;
 }
