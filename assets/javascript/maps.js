@@ -93,8 +93,6 @@
                         icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
                     }
 
-                    // database.ref().push(currentLocation);
-
                     resolve(currentLocation);
                 } else {
                     reject(status);
