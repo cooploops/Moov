@@ -35,6 +35,7 @@ function signUp(){
 	        'city' : "",
 	        'zipCode' : '',
 	        'photoURL' : '',
+	        'Moover' : false //this bolean is for determining whether the user is a mover or not
 	    })
 
 	   });
@@ -75,3 +76,67 @@ function logOut(){
 	    $("#content").empty();
 	})
 }
+
+//this is Facebook SDK
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '398792087203245',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+    FB.AppEvents.logPageView();   
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+var provider = new firebase.auth.FacebookAuthProvider();
+provider.addScope('users_friends');
+
+function facebookSignin() {
+   firebase.auth().signInWithPopup(provider)
+
+   .then(function(result) {
+      var token = result.credential.accessToken;
+      var user = result.user;
+    
+      console.log(token)
+      console.log(user)
+
+    if(!database.ref('/Users/' + user.uid).email){ //this will check if the user already exist
+
+	      database.ref('/Users/' + user.uid).set({
+		        'email': user.email,
+		        'full address': "",
+		        'display name' : "",
+		        'city' : "",
+		        'zipCode' : '',
+		        'photoURL' : '',
+		        'Moover' : false //this bolean is for determining whether the user is a mover or not
+		  })
+  	}
+
+   }).catch(function(error) {
+      console.log(error.code);
+      console.log(error.message);
+   });
+}
+
+//This is repeatetive since signout works for both email/password signup and facebook sign up.
+
+// function facebookSignout() {
+//    firebase.auth().signOut()
+   
+//    .then(function() {
+//       console.log('Signout successful!')
+//    }, function(error) {
+//       console.log('Signout failed')
+//    });
+// }
