@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Moov Results</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
+	<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg bg-light">
+		  <a class="navbar-brand" href="#">Moov</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav ml-auto">
+		      <li class="nav-item">
+		        <a class="nav-link" id="help" href="#"><i class="fa fa-lg fa-question-circle" aria-hidden="true"></i>&nbsp; Help</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" id="profile" href="#"><i class="fa fa-lg fa-user-circle-o" aria-hidden="true"></i>&nbsp; Profile</a>
+		      </li>
+		    </ul>
+		  </div>
+	</nav>
+	
+	<div class="container">
+		<!-- Search bar with previous searched address, will have to be added via jQuery -->
+		<div class="row mb-2 bar">
+			<div class="form-group col-md-12 my-1 mx-2">
+			<label for="previouslyEnteredAddress">Entered Address</label>
+			<input class="form-control" type="text" id="address" placeholder="Entered Address (will add via jQuery)">
+			</div>
+		</div>
+
+		<div class="row results">
+			<!-- Result Profiles -->
+			<div class="col-md-8 resultsField">
+				<div class="row">
+					<div class="card w-100 mx-2 my-1" style="width: 20rem;">
+					  <div class="card-body p-1">
+					  	<img class="card-img-top profilePhoto mr-auto" src="assets/images/testprofilepicture1.jpg" alt="Card image cap">
+					  	<a href="#" class="btn btn-primary contact">Contact</a>
+					    <h4 class="card-title" id="profileName">Ben Arnold</h4>
+					    <span class="starRating mb-2">
+						  <input id="rating5" type="radio" name="rating" value="5">
+						  <label for="rating5">5</label>
+						  <input id="rating4" type="radio" name="rating" value="4">
+						  <label for="rating4">4</label>
+						  <input id="rating3" type="radio" name="rating" value="3">
+						  <label for="rating3">3</label>
+						  <input id="rating2" type="radio" name="rating" value="2">
+						  <label for="rating2">2</label>
+						  <input id="rating1" type="radio" name="rating" value="1">
+						  <label for="rating1">1</label>
+						</span>
+					    <h6 id="profileEmail">benarnold72@gmail.com</h6>
+					    <p class="card-text">Have a 2001 Chevy S series truck willing to drive within 20 miles</p>
+					  </div>
+					</div>	
+				</div>
+				<div class="row">
+					<div class="card w-100 mx-2 my-1" style="width: 20rem;">
+					  <div class="card-body p-1">
+					  	<img class="card-img-top profilePhoto mr-auto" src="assets/images/testprofilepicture2.jpg" alt="Card image cap">
+					  	<a href="#" class="btn btn-primary contact">Contact</a>
+					    <h4 class="card-title" id="profileName">Gabriela Alcorn</h4>
+					    <span class="starRating mb-2">
+						  <input id="rating5" type="radio" name="rating" value="5">
+						  <label for="rating5">5</label>
+						  <input id="rating4" type="radio" name="rating" value="4">
+						  <label for="rating4">4</label>
+						  <input id="rating3" type="radio" name="rating" value="3">
+						  <label for="rating3">3</label>
+						  <input id="rating2" type="radio" name="rating" value="2">
+						  <label for="rating2">2</label>
+						  <input id="rating1" type="radio" name="rating" value="1">
+						  <label for="rating1">1</label>
+						</span>
+					    <h6 id="profileEmail">gabbysaid213@gmail.com</h6>
+					    <p class="card-text">Don't have a truck but a pretty big Honda sedan and would be willing to help for some extra cash. Distance: 30 miles</p>
+					  </div>
+					</div>	
+				</div>
+			</div>
+			<!-- Result Map -->
+			<div class="col-md-4 mapField">
+				<div class="my-2" id="map"></div>
+			</div>
+		</div>
+
+	<div class="push"></div>
+	</div>
+
+	<footer>
+		<div class="container-fluid">	
+			<h4 class="copyright">© 2017 Moov</h4>
+		</div>
+	</footer>
+	<script src="https://use.fontawesome.com/484506c304.js"></script>
+	<script type="text/javascript" src="assets/javascript/maps.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoYCrsZAGAKToAbKePx7vnrKvSmJ6zhHE&libraries=places&callback=initMap"></script>
+</body>
+</html>

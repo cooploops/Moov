@@ -1,0 +1,247 @@
+* {
+	box-sizing: border-box;
+}
+html, body { 
+	height: 100%;
+	width: 100%; 
+	margin: 0;
+}
+
+.glyphicon {
+	position: relative;
+	width:16px;
+	right: 0px;
+	color:gray;
+
+}
+
+.navbar-brand{
+	color: purple;
+	font-size: 20px;
+	font-family: sans-serif;
+}
+
+#help-btn{
+	margin-right: 20px;
+	border: none;
+	width: 70px;
+	vertical-align: middle;
+	color: #ff7b51;
+	position: relative;
+	
+}
+
+
+/*Top Section------------------------*/
+.outer-box {
+	position: relative;
+	height: 500px;
+}
+
+.carousel {
+	position: absolute;
+	z-index: 1;
+	height: 75vh;
+	width: 100vw;
+	opacity: 0.8;
+}
+
+#searchBox{
+	margin-right: 80px;
+	outline-color: none;
+	width: 100%;
+	right: 100px;
+	vertical-align: middle;
+
+}
+
+#logIn-btn {
+	margin-right: 50px;
+	border: none;
+	width: 70px;
+	color: #ff7b51;
+	vertical-align: middle;
+	color: pink;
+}
+
+.container-fluid{
+	background-color: white;
+	font-family: "SF Pro Text","Myriad Set Pro","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+	color: black;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.jumbotron{
+
+	margin-top: 0px;
+	background-color:#eeb915;
+
+}
+
+
+.img-fluid {
+	width:100%;
+	height: 600px;
+	margin-top: 0px;
+
+}
+
+.jumbotron h1{
+	margin-left: 30px;
+}
+
+.jumbotron a{
+	margin-left: 30px;
+	background-color: #eeb915;
+	border-color: #eeb915;
+
+}
+
+a{
+	color: #ff7b51;
+	text-decoration: none;
+	padding-bottom: .3125rem;
+}
+
+
+#searchForm{
+	margin: auto;
+	width: 400px;
+}
+
+.form-group{
+	margin-bottom: 1rem;
+}
+
+.form-control .input-group-addon{
+	margin-top: 500px;
+	z-index:2;
+	margin-bottom: 0;
+	display: flex;
+}
+
+/*Results Page Styling*/
+.fa {
+	color: black;
+}
+.bar {
+	border: 1px solid black;
+	background-color: pink;
+	margin-top: 2rem;
+	height: 5rem;
+}
+#address {
+	/*width: 100%;*/
+}
+.results {
+	border: 1px solid black;
+	height: auto;
+}
+.resultsField {
+	background-color: lightblue;
+}
+.profilePhoto {
+	height: 170px;
+	width: 180px;
+	border-radius: 50%;
+	float: left;
+	padding-right: 1rem;
+	padding-bottom: 1rem;
+}
+.contact{
+	float: right;
+}
+.mapField {
+	background-color: lightgrey;
+}
+#map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+}
+/*Star Rating System
+Can take out if group wants. Can be edited using jQuery plugin, not installed yet*/
+.starRating:not(old){
+  display        : inline-block;
+  width          : 7.5em;
+  height         : 1.5em;
+  overflow       : hidden;
+  vertical-align : bottom;
+}
+.starRating:not(old) > input{
+  margin-right : -100%;
+  opacity      : 0;
+}
+.starRating:not(old) > label{
+  display         : block;
+  float           : right;
+  position        : relative;
+  background      : url('../images/star-off.svg');
+  background-size : contain;
+}
+.starRating:not(old) > label:before{
+  content         : '';
+  display         : block;
+  width           : 1.5em;
+  height          : 1.5em;
+  background      : url('../images/star-on.svg');
+  background-size : contain;
+  opacity         : 0;
+  transition      : opacity 0.2s linear;
+}
+.starRating:not(old) > label:hover:before,
+.starRating:not(old) > label:hover ~ label:before,
+.starRating:not(:hover) > :checked ~ label:before{
+  opacity : 1;
+}
+
+/*Sticky Footer*/
+footer {
+	width: 100%;
+	line-height: 25px;
+	background: #19323C;
+}
+footer,
+.push {
+	height: 110px;
+}
+.copyright {
+	margin-top: 2rem;
+}
+.container-fluid {
+	width: auto;
+	height: 40px;
+	color: #FFFFFB;
+	font-size: 20px;
+	margin: 0 auto;
+	padding: 1em 10%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
