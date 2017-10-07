@@ -35,6 +35,8 @@ html, body {
 }
 .resultsField {
 	background-color: lightblue;
+	overflow: auto;
+	height: 420px;
 }
 .profilePhoto {
 	height: 170px;
