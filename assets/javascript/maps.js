@@ -11,7 +11,9 @@
 
     var database = firebase.database();
 
-    var map, geocoder, service, markers, bounds, infoWindow, address;
+    var map, geocoder, service, bounds, infoWindow, address, google, maps;
+
+    var markers = [];
 
     var locations = [];
 
@@ -31,14 +33,47 @@
         infoWindow = new google.maps.InfoWindow();
         // initialize array to hold map markers
         markers = [];
-    }
 
-    $("#submit").on("click", function() {
+        console.log("----------------");
+
+
+        console.log("-----------------------------------");
+
+        address = localStorage.getItem("full_address");
+
+        console.log(address)
 
         clearLocations();
-        address = $("#address").val();
+
+
         geocodeAddress(address)
             .then(function(curLocations) {
+
+
+            database.ref("/Users").on("value", function(snap) {
+
+            // console.log(snap);
+
+            locations = []
+            snap.forEach(child => {
+
+                // console.log(child.val().email);
+
+
+                locations.push({
+                    position: { lat: child.val().lat, lng: child.val().lng },
+                });
+
+                console.log(locations);
+            })
+
+            }, function(errorObject) {
+                console.log("Submit Failed: " + errorObject.code);
+            });
+
+                console.log(locations);
+
+
                 bounds = new google.maps.LatLngBounds();
 
                 markers = [];
@@ -58,30 +93,18 @@
                         markers.push(marker);
                     }
 
-                    $("#address").val("");
                 });
                 map.fitBounds(bounds);
             })
             .catch(function(error) {
-                console.log(status);
-            });
-    });
+            console.log(error);
+        });
 
-    database.ref().on("value", function(snap) {
-        locations = []
-        snap.forEach(child => {
-            locations.push({
-                position: { lat: child.val().lat, lng: child.val().lng },
-                // address: child.val().address
-            });
-        })
-
-    }, function(errorObject) {
-        console.log("Submit Failed: " + errorObject.code);
-    });
+    }
 
 
     function geocodeAddress(address) {
+        geocoder = new google.maps.Geocoder();
         return new Promise(function(resolve, reject) {
             geocoder.geocode({ 'address': address }, function(results, status) {
                 if (status == "OK") {
