@@ -1,19 +1,122 @@
+/*Homepage Styling*/
+
 * {
 	box-sizing: border-box;
 }
+
 html, body { 
 	height: 100%;
 	width: 100%; 
 	margin: 0;
 }
 
+body {
+	color: #846240;
+}
+
+.container-fluid {
+	padding:0;
+}
+
+.navbar-brand {
+	font-family: 'Quicksand', sans-serif;
+	color:#ef7cab;
+	font-weight: bold;
+}
+
+.nav-link {
+	color:#ef7cab;
+	font-family: 'Quicksand', sans-serif;
+	font-weight: bold;
+}
+
+.nav-link:hover{
+	color:#d8709b;
+}
+
 .input-group {
 	position:absolute;
 	margin-top:12rem;
+	width: 95%;
+}
+
+#submit {
+	background-color: #ef7cab;
+	border-color: #ef7cab;
+	color:white;
+}
+
+#submit:hover {
+	background-color: #d8709b;
+	border-color: #d8709b;
+	color:white;
 }
 
 .landingPage {
 	height:520px;
+}
+
+#moovHeadline{
+	font-family: 'Lora', serif;
+	color: #ef7cab;
+}
+
+#pMoov {
+	color:#ef7cab;
+}
+
+#carousel{
+	width:70%;
+}
+
+.carousel-inner {
+	border-radius:3px;
+}
+
+.description{
+/*	background-color: #ef7cab;
+	border:1px solid mintcream;
+	border-radius:5px;*/
+}
+
+.signUp {
+	background-color: mintcream;
+	border-radius: 3px;
+	border:10px solid #2fae56;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.signUp a{
+	background-color: #ef7cab;
+	border-color: #ef7cab;
+	color: white;
+}
+
+.signUp a:hover{
+	background-color: #d8709b;
+	border-color: #d8709b;
+	color: white;
+}
+
+.divider {
+	margin-right: -30px;
+}
+
+.aboutUs {
+	background-color: mintcream;
+	border-radius: 3px;
+	border:10px solid #2fae56;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.aboutUs h4{
+	color:#ef7cab;
+	font-family: 'Quicksand', sans-serif;
+	font-weight:bold;
+}
+
+footer{
+	color:#ef7cab;
 }
 
 /*Results Page Styling*/
@@ -100,7 +203,7 @@ Can take out if group wants. Can be edited using jQuery plugin, not installed ye
 
 /*Sticky Footer*/
 footer {
-	position:absolute;
+	position:relative;
 	bottom:0;
 	left:0;
 	right:0;
@@ -110,14 +213,7 @@ footer {
 .copyright {
 	margin-top: 2rem;
 }
-.container-fluid {
-	width: auto;
-	height: 40px;
-	color: #FFFFFB;
-	font-size: 20px;
-	margin: 0 auto;
-	padding: 1em 10%;
-}
+
 
 
 
