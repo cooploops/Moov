@@ -29,22 +29,27 @@
 	   auth.createUserWithEmailAndPassword(email, pass).then(function(user){
 
 	     // create a new Node
-	    database.ref('/Users/' + user.uid).set({
+		    database.ref('/Users/' + user.uid).set({
 
-	        'email': email2,
-	        'full address': "",
-	        'lat' : 23,
-	        'lng' : 23,
-	        'display name' : "",
-	        'city' : "",
-	        'zipCode' : '',
-	        'photoURL' : '',
-	        'Moover' : false , //this bolean is for determining whether the user is a mover or not
-	        'chat' : [1,2,3],
-	        'Full name' : 'everything',
-	    })
+		        'email': email2,
+		        'full address': "",
+		        'lat' : 23,
+		        'lng' : 23,
+		        'display name' : "",
+		        'city' : "",
+		        'zipCode' : '',
+		        'photoURL' : '',
+		        'Moover' : false , //this bolean is for determining whether the user is a mover or not
+		        'chat' : [1,2,3],
+		        'Full name' : 'everything',
+		    })
 
+	   }).catch(function(error) {
+	      console.log(error.code);
+	      console.log(error.message);
 	   });
+
+	   $("#signUpModal").modal("hide");
 	   
 	});
 
@@ -66,7 +71,12 @@
 
 	    .then( function(user){
 	    	console.log(database.ref('/Users/' + user.uid));
-	    });
+	    }).catch(function(error) {
+		      console.log(error.code);
+		      console.log(error.message);
+   		});
+
+	    $("#signUpModal").modal("hide");
 	});
 
 	firebase.auth().onAuthStateChanged(function(firebaseUser) {
@@ -79,11 +89,32 @@
 	        $("#logOut-btn").css("display" , "none");
 	        $("#logIn-btn").css("display" , "block");
 	    }
+
+	    database.ref('/Users/' + firebaseUser.uid).once("value").then( function(snapShot){
+
+	    	console.log(snapShot.val());
+
+	    	if(!snapShot.val()){
+
+	    		database.ref('/Users/' + firebaseUser.uid).set({
+			        'email': firebaseUser.email,
+			        'full address': "",
+			        'display name' : "",
+			        'city' : "",
+			        'zipCode' : '',
+			        'photoURL' : '',
+			        'Moover' : false //this bolean is for determining whether the user is a mover or not
+		  		});
+
+	    	}
+	    })
 	});
 
 	$("#facebookBtn").on('click' , function(){
 
-		facebookSignin();
+		facebookSignIn();
+
+		$("#signUpModal").modal("hide");
 
 	})
 
@@ -102,8 +133,8 @@
 
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '398792087203245',
-      // cookie     : true,
+      appId      : '311962162613192',
+      cookie     : true,
       xfbml      : true,
       version    : 'v2.10'
     });
@@ -118,36 +149,49 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-var provider = new firebase.auth.FacebookAuthProvider();
-provider.addScope('users_friends');
 
-function facebookSignin() {
-   firebase.auth().signInWithPopup(provider)
+	// FB.getLoginStatus(function(response) {
+	//     statusChangeCallback(response);
+	// });
 
-   .then(function(result) {
-      var token = result.credential.accessToken;
-      var user = result.user;
-    
-      console.log(token)
-      console.log(user)
+function facebookSignIn(){
 
-    if(!database.ref('/Users/' + user.uid).email){ //this will check if the user already exist
+	var provider = new firebase.auth.FacebookAuthProvider();
 
-	      database.ref('/Users/' + user.uid).set({
-		        'email': user.email,
-		        'full address': "",
-		        'display name' : "",
-		        'city' : "",
-		        'zipCode' : '',
-		        'photoURL' : '',
-		        'Moover' : false //this bolean is for determining whether the user is a mover or not
-		  })
-  	}
+    provider.addScope('user_friends');
 
-   }).catch(function(error) {
-      console.log(error.code);
-      console.log(error.message);
-   });
+    firebase.auth().signInWithRedirect(provider);
+
+    firebase.auth().getRedirectResult().then( function(result) {
+
+        if (result.credential) {
+            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+            var token = result.credential.accessToken;
+            // ...
+            //, {access_token : token}
+            FB.api("/me/friends", function(response) {
+                        console.log(response);
+            });
+        }
+        // The signed-in user info.
+        var userFB = result.user;
+        console.log(userFB.uid);
+
+
+    }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+        console.log(errorCode);
+        console.log(errorMessage);
+        console.log(email);
+        console.log(credential);
+    });
 }
 
 //This is repeatetive since signout works for both email/password signup and facebook sign up.
