@@ -9,12 +9,12 @@
   // };
   // firebase.initializeApp(config);
 
-// window.onload = function() {
+
 	var weatherData ={
 		location:"",
 		zipcode:null,
 		city:null,
-	
+
 		genWeather: function(){
 			var queryURL = 'https://api.wunderground.com/api/424faf8d8148f1a3/forecast10day/geolookup/conditions/q/' + weatherData.location + '.json'
 			$.ajax({
@@ -30,14 +30,14 @@
 			var forecast = response.forecast.simpleforecast.forecastday;
 			var current = response.current_observation;
 			// create new row to hold weather information
-			var titleRow = $("<div> class='row'>");
-			titleRow.html("<h4 class=text-center>"+response.location.city+" 5 day forecast</h4><br>");
+			var titleRow = $("<div> class='row align-items-start'>");
+			titleRow.html("<h4 class=text-center>"+response.location.city+" 5 Day Forecast</h4>");
 			$(".forecast").append(titleRow);
 			var weatherRow = $("<div class='row'>");
 			// data comes in array for each day so create array that pulls data for 5 days including today
 			for(i=0;i<5;i++){
 				var newCol = $("<div class='col dailyForecast text-center'>");
-				newCol.html("<h4>"+forecast[i].date.weekday_short+"</h4><br><img src='"+forecast[i].icon_url+"'><br><p>Conditions: "+forecast[i].conditions+"<br>High: "+forecast[i].high.fahrenheit+"<br>Low: "+forecast[i].low.fahrenheit);
+				newCol.html("<h4>"+forecast[i].date.weekday_short+"</h4><br><img src='"+forecast[i].icon_url+"'><br><p>Conditions: "+forecast[i].conditions+"<br><span id='highTemp'>"+forecast[i].high.fahrenheit+"</span> | <span id='lowTemp'>"+forecast[i].low.fahrenheit)+"</span>";
 				weatherRow.append(newCol);
 			}
 			$(".forecast").append(weatherRow);
@@ -57,10 +57,8 @@
 
 	}
 
-	$("#getWeather").on("click", function(event){
-	event.preventDefault();
-	weatherData.zipcode = $("#zipCode").val().trim();
-	weatherData.city = $("#city").val().trim();
+	weatherData.zipcode = localStorage.getItem("addressZip");
+	weatherData.city = localStorage.getItem("addressCity");
 	console.log(weatherData.city);
 	console.log(weatherData.zipcode);
 	if(weatherData.zipcode === "" && weatherData.city === ""){
@@ -71,7 +69,25 @@
 	} else if(weatherData.city != "" && weatherData.zipcode === ""){
 		weatherData.location = "CA/" + weatherData.city;
 		weatherData.genWeather();
+	} else if (weatherData.zipcode != "" && weatherData.city != ""){
+		weatherData.location = weatherData.zipcode;
+		weatherData.genWeather();
 	}
-	})
+
+	// $("#getWeather").on("click", function(event){
+	// event.preventDefault();
+	// weatherData.zipcode = $("#zipCode").val().trim();
+	// weatherData.city = $("#city").val().trim();
+	// console.log(weatherData.city);
+	// console.log(weatherData.zipcode);
+	// if(weatherData.zipcode === "" && weatherData.city === ""){
+	// 	console.log("zip code or city was not provided");
+	// } else if(weatherData.zipcode != "" && weatherData.city === ""){
+	// 	weatherData.location = weatherData.zipcode;
+	// 	weatherData.genWeather();
+	// } else if(weatherData.city != "" && weatherData.zipcode === ""){
+	// 	weatherData.location = "CA/" + weatherData.city;
+	// 	weatherData.genWeather();
+	// }
+	// })
 	
-// }

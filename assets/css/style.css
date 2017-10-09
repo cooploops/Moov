@@ -197,8 +197,12 @@ Can take out if group wants. Can be edited using jQuery plugin, not installed ye
 }
 
 /*weather*/
-.weather {
+#highTemp {
+	color: #dc434b;
+}
 
+#lowTemp{
+	color: #4a85c5;
 }
 
 /*Sticky Footer*/
