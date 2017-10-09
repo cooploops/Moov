@@ -7,17 +7,35 @@
     storageBucket: "moov-7f456.appspot.com",
     messagingSenderId: "26403369152"
   };
+
   firebase.initializeApp(config);
 
     var database = firebase.database();
 
-    var map, geocoder, service, markers, bounds, infoWindow, address;
+    database.ref("/Users").on("value", function(snap) {
+                // console.log(snap);
+                // locations = []
+        snap.forEach(child => {
+
+            // console.log(child.val().email);
+        locations.push({
+            position: { lat: child.val().lat, lng: child.val().lng },
+        });
+
+        console.log(locations);
+        })
+
+        }, function(errorObject) {
+        console.log("Submit Failed: " + errorObject.code);
+    });
+
+    var map, geocoder, service, bounds, infoWindow, address, google, maps;
+
+    var markers = [];
 
     var locations = [];
 
     var losAngeles = { lat: 34.052235, lng: -118.243683 };
-
-    var users = database.ref();
 
     function initMap() {
         // Create a map object and specify the DOM element for display.
@@ -29,25 +47,32 @@
         geocoder = new google.maps.Geocoder();
         service = new google.maps.places.PlacesService(map);
         infoWindow = new google.maps.InfoWindow();
+        bounds = new google.maps.LatLngBounds();
         // initialize array to hold map markers
         markers = [];
-    }
 
-    $("#submit").on("click", function() {
+        address = localStorage.getItem("full_address");
+
+        console.log(address)
 
         clearLocations();
-        address = $("#address").val();
+
         geocodeAddress(address)
             .then(function(curLocations) {
-                bounds = new google.maps.LatLngBounds();
+
+                console.log(curLocations);
 
                 markers = [];
+
+                console.log(locations);
 
                 locations.forEach(function(element) {
                     let isNear = arePointsNear(element.position, curLocations, 15)
                     console.log(isNear)
 
                     if (isNear) {
+
+                        console.log(element);
 
                         var marker = new google.maps.Marker({
                             position: element.position,
@@ -58,30 +83,18 @@
                         markers.push(marker);
                     }
 
-                    $("#address").val("");
                 });
                 map.fitBounds(bounds);
             })
             .catch(function(error) {
-                console.log(status);
-            });
-    });
+            console.log(error);
+        });
 
-    database.ref().on("value", function(snap) {
-        locations = []
-        snap.forEach(child => {
-            locations.push({
-                position: { lat: child.val().lat, lng: child.val().lng },
-                // address: child.val().address
-            });
-        })
-
-    }, function(errorObject) {
-        console.log("Submit Failed: " + errorObject.code);
-    });
+    }
 
 
     function geocodeAddress(address) {
+        geocoder = new google.maps.Geocoder();
         return new Promise(function(resolve, reject) {
             geocoder.geocode({ 'address': address }, function(results, status) {
                 if (status == "OK") {
@@ -92,6 +105,8 @@
                         lng: results[0].geometry.location.lng(),
                         icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
                     }
+
+                    console.log(currentLocation);
 
                     resolve(currentLocation);
                 } else {

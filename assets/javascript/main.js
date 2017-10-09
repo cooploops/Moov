@@ -14,8 +14,8 @@ window.onload = function () {
 
 		localStorage.setItem("full_address", searchAddress);
 		localStorage.setItem("addressCity", parsed.city);
-		localStorage.setItem("addressZip", parsed.zip)
-
+		localStorage.setItem("addressZip", parsed.zip);
+        
 	});
 
 }
