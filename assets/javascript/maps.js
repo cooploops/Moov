@@ -12,28 +12,11 @@
 
     var database = firebase.database();
 
-    database.ref("/Users").on("value", function(snap) {
-                // console.log(snap);
-                // locations = []
-        snap.forEach(child => {
-
-            // console.log(child.val().email);
-        locations.push({
-            position: { lat: child.val().lat, lng: child.val().lng },
-        });
-
-        console.log(locations);
-        })
-
-        }, function(errorObject) {
-        console.log("Submit Failed: " + errorObject.code);
-    });
+    var locations = [];
 
     var map, geocoder, service, bounds, infoWindow, address, google, maps;
 
     var markers = [];
-
-    var locations = [];
 
     var losAngeles = { lat: 34.052235, lng: -118.243683 };
 
@@ -48,6 +31,7 @@
         service = new google.maps.places.PlacesService(map);
         infoWindow = new google.maps.InfoWindow();
         bounds = new google.maps.LatLngBounds();
+
         // initialize array to hold map markers
         markers = [];
 
@@ -60,31 +44,39 @@
         geocodeAddress(address)
             .then(function(curLocations) {
 
-                console.log(curLocations);
 
-                markers = [];
+                database.ref("/Users").on("value", function(snap) {
+                    snap.forEach(child => {
+                    locations.push({position: { lat: child.val().lat, lng: child.val().lng },});
 
-                console.log(locations);
+                        markers = [];
+                        console.log(locations);
 
-                locations.forEach(function(element) {
-                    let isNear = arePointsNear(element.position, curLocations, 15)
-                    console.log(isNear)
+                        locations.forEach(function(element) {
+                            let isNear = arePointsNear(element.position, curLocations, 15)
+                            // console.log(curLocations);
+                            console.log(isNear)
+                            if (isNear) {
+                                console.log(element);
 
-                    if (isNear) {
+                                var marker = new google.maps.Marker({
+                                    position: element.position,
+                                    map: map
+                                });
 
-                        console.log(element);
-
-                        var marker = new google.maps.Marker({
-                            position: element.position,
-                            map: map
+                                bounds.extend(element.position);
+                                markers.push(marker);
+                            }
                         });
+                        map.fitBounds(bounds);
 
-                        bounds.extend(element.position);
-                        markers.push(marker);
-                    }
 
+                })
+                }, function(errorObject) {
+                console.log("Submit Failed: " + errorObject.code);
                 });
-                map.fitBounds(bounds);
+
+
             })
             .catch(function(error) {
             console.log(error);
@@ -105,8 +97,6 @@
                         lng: results[0].geometry.location.lng(),
                         icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
                     }
-
-                    console.log(currentLocation);
 
                     resolve(currentLocation);
                 } else {
