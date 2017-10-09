@@ -47,17 +47,37 @@
 
                 database.ref("/Users").on("value", function(snap) {
                     snap.forEach(child => {
-                    locations.push({position: { lat: child.val().lat, lng: child.val().lng },});
+                    locations.push({
+                        position: { lat: child.val().lat, lng: child.val().lng },
+                        displayName: child.val()["display name"],
+                        photo: child.val().photoURL,
+                        email: child.val().email
+                                    });
 
                         markers = [];
                         console.log(locations);
 
-                        locations.forEach(function(element) {
+                        locations.forEach(function(element, i) {
                             let isNear = arePointsNear(element.position, curLocations, 15)
                             // console.log(curLocations);
                             console.log(isNear)
+                            
                             if (isNear) {
+
                                 console.log(element);
+
+                                var row = $("<div class='row'>");
+                                var card = $("<div class='card w-100 mx-2 my-1' style='width: 20rem;'>");
+                                var cardBody = $("<div class='card-body p-1'>");
+                                var img = $("<img class='card-img-top profilePhoto mr-auto'>");
+                                var anchor = $("<a class='btn btn-primary contact'>");
+                                var h4 = $("<h4 class='card-title'>");
+                                var h6 = $("<h6>");
+
+                                row.append(card.append(cardBody.append(img.attr("src", element.photo).attr("alt", "Card image cap"))
+                                .append(anchor.attr("href", "#").text("Contact")).append(h4.attr("id", "profileName").text(element.displayName)).append(h6.attr("id", "profileEmail").text(element.email))));
+
+                                $(".resultsField").append(row);
 
                                 var marker = new google.maps.Marker({
                                     position: element.position,
