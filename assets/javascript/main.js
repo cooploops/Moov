@@ -19,3 +19,8 @@ window.onload = function () {
 	});
 
 }
+
+$("#logIn-btn").on('click' , function(){
+	console.log("salam");
+	$('#signUpModal').modal('show');
+})

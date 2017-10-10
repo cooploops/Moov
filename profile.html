@@ -24,13 +24,13 @@
                     <a class="nav-link" id="help" href="#"><i class="fa fa-lg fa-question-circle" aria-hidden="true"></i>&nbsp; Help</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="profile" href="#"><i class="fa fa-lg fa-user-circle-o" aria-hidden="true"></i>&nbsp; Profile</a>
+                    <a class="nav-link" id="logIn-btn" href="#"><i class="fa fa-lg fa-user-circle-o" aria-hidden="true"></i>&nbsp; Log In</a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container mt-3">
-        <div class="row welcomeHeader">
+        <!-- <div class="row welcomeHeader">
             <div class="col-md-12">
                 <nav class="navbar navbar-light bg-light">
                     <span class="navbar-text">
@@ -38,10 +38,19 @@
                     </span>
                 </nav>
             </div>
-        </div>
+        </div> -->
         <div class="row profileUserAddress mb-2">
-            <div class="col-7">
+            <div class="col-12">
                 <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    </div>
                     <div class="form-group">
                         <label for="inputAddress" class="col-form-label">Name</label>
                         <input type="text" class="form-control" id="inputName" placeholder="John Smith">
@@ -129,24 +138,25 @@
                     </div>
                     <button type="submit" class="btn btn-primary" id="saveInfo">Save</button>
                 </form>
-                <div class="col-5">
+                <!-- <div class="col-5">
+                </div> -->
+            </div>
+            <div class="row profileFormChat mt-3">
+                <div class="col-7">
                 </div>
-                <div class="row profileFormChat mt-3">
-                    <div class="col-7">
-                    </div>
-                    <div class="col-5">
-                    </div>
+                <div class="col-5">
                 </div>
             </div>
         </div>
-        <footer class="row justify-content-center">
-            <div class="col text-center">
-                <h4 class="copyright">© 2017 Moov</h4>
-            </div>
-        </footer>
+    </div>
+    <footer class="row justify-content-center">
+        <div class="col text-center">
+            <h4 class="copyright">© 2017 Moov</h4>
+        </div>
+    </footer>
 </body>
-<script type="text/javascript" src="assets/javascript/profile.js"></script>
-
 <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoYCrsZAGAKToAbKePx7vnrKvSmJ6zhHE&libraries=places&callback=initMap"></script>
+<script type="text/javascript" src="assets/javascript/profile.js"></script>
+<script type="text/javascript" src="assets/javascript/Auth.js"></script>
 
 </html>
