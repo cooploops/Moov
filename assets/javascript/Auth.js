@@ -83,10 +83,12 @@
 
 	    if (firebaseUser) {
 	        $("#logOut-btn").css("display" , "block");
+	        $("#profile").css("display","block");
 	        $("#logIn-btn").css("display" , "none");
 	    } else {
 	        console.log('not logged in');
 	        $("#logOut-btn").css("display" , "none");
+	        $("#profile").css("display","none");
 	        $("#logIn-btn").css("display" , "block");
 	    }
 

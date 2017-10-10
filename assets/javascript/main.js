@@ -20,7 +20,8 @@ window.onload = function () {
 
 }
 
+
+//this is the button for Modal
 $("#logIn-btn").on('click' , function(){
-	console.log("salam");
-	$('#signUpModal').modal('show');
-})
+    $("#signUpModal").modal("show");
+});
