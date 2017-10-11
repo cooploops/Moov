@@ -18,8 +18,6 @@
 
     var markers = [];
 
-    var people = [];
-
     var losAngeles = { lat: 34.052235, lng: -118.243683 };
 
     function initMap() {
@@ -39,43 +37,24 @@
 
         address = localStorage.getItem("full_address");
 
-        console.log(address)
-
         clearLocations();
 
         geocodeAddress(address)
             .then(function(curLocations) {
 
-                console.log(curLocations);
-
                 database.ref("/Users").on("value", function(snap) {
 
-                    people.push(snap.val());
-
-                    console.log(people[0]);
-
-                    var t = Object.keys(people[0]);
-
-                    console.log(t);
-
-                    for (i = 0; i < t.length; i++) {
-                        var uniqueKey = t[i];
-
-                    }
-
-                    // console.log(typeof people[0]);
-
                     snap.forEach(function(child, index) {
+
                         locations.push({
                             position: { lat: child.val().lat, lng: child.val().lng },
                             displayName: child.val()["display name"],
                             photo: child.val().photoURL,
                             email: child.val().email,
-                            id: uniqueKey
+                            id: child.ref.path.W[1]
                         });
 
                         markers = [];
-                        console.log(locations);
 
                     });
 
@@ -83,12 +62,10 @@
                     locations.forEach(function(element, i) {
 
                         let isNear = arePointsNear(element.position, curLocations, 15)
-                        // console.log(curLocations);
+
                         console.log(isNear)
 
                         if (isNear) {
-
-                            console.log(element);
 
                             var row = $("<div class='row'>");
                             var card = $("<div class='card w-100 mx-2 my-1' style='width: 20rem;'>");
@@ -99,7 +76,7 @@
                             var h6 = $("<h6>");
 
                             row.append(card.append(cardBody.append(img.attr("src", element.photo).attr("alt", "Card image cap"))
-                                .append(anchor.attr("data-key", Object.keys(people[0]).forEach(function(person){ console.log(this.person) })).text("Contact")).append(h4.attr("id", "profileName").text(element.displayName)).append(h6.attr("id", "profileEmail").text(element.email))));
+                                .append(anchor.attr("data-key", element.id).text("Contact")).append(h4.attr("id", "profileName").text(element.displayName)).append(h6.attr("id", "profileEmail").text(element.email))));
 
                             $(".resultsField").append(row);
 
