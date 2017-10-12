@@ -24,6 +24,12 @@ body {
 	font-weight: bold;
 }
 
+.navbar-brand:hover {
+	font-family: 'Quicksand', sans-serif;
+	color:#d8709b;
+	font-weight: bold;
+}
+
 .nav-link {
 	color:#ef7cab;
 	font-family: 'Quicksand', sans-serif;
@@ -124,23 +130,34 @@ footer{
 	color: black;
 }
 .bar {
+	display:none;
 	border: 1px solid black;
-	background-color: pink;
+	background-color: #f49ac2;
 	margin-top: 2rem;
 	height: 5rem;
+	font-family: 'Quicksand', sans-serif;
+	font-weight:bold;
 }
 #address {
 	/*width: 100%;*/
 }
 .results {
-	border: 1px solid black;
+	border: 10px solid #2fae56;
+	border-radius:5px;
 	height: auto;
+	font-family: 'Quicksand', sans-serif;
+	font-weight:bolder;
 }
 .resultsField {
-	background-color: lightblue;
+	background-color: #f49ac2;
 	overflow: auto;
 	height: 420px;
 }
+
+.resultsUser{
+	background-color:mintcream;
+}
+
 .profilePhoto {
 	height: 170px;
 	width: 180px;
@@ -149,9 +166,29 @@ footer{
 /*	padding-right: 1rem;
 	padding-bottom: 1rem;*/
 }
+
+#profileName{
+	margin-top:0.3em;
+	margin-left:30%;
+}
+
+#profileEmail{
+	margin-left:30%;
+}
 .contact{
 	float: right;
+	background-color: #f49ac2;
+	border-color: #f49ac2;
+	font-family: 'Quicksand', sans-serif;
+	font-weight:bold;
+
 }
+
+.contact:hover{
+	background-color:#d8709b;
+	border-color:#d8709b;
+}
+
 .mapField {
 	background-color: lightgrey;
 }
@@ -219,12 +256,80 @@ footer {
 }
 
 
+.background-2 .background-1 .background-3 {
+	width: 100%;
+    height: 180px;
+}
 
 
+.face1 .face2 .face3 { 
+    position: absolute;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin-left: 40rem;
+    top: 8rem;
+    border-color: green;
+    border: solid 2px;
+}
 
 
+/*Help page*/
 
+.face{
+		border-radius: 100%;
+		height:8rem;
+		width:8rem;
+		margin-bottom:20px;
+		border-color: white 1px;
+		position: absolute;
+		margin-top: 5rem;
+		margin-left: 7rem;
+	}
 
+	.background {
+		height: 10rem;
+	}
+	.exp-name{
+		margin-top:4rem;
+		text-align: center;
+	}
+
+	.about-main-pg{
+		background-color: rgba(241, 97, 10, 0.24);
+		margin-bottom: 0px;
+		
+	}
+
+	.about-pg-title{
+		color:white;
+		margin-bottom: 70px;
+	}
+
+	.about-main-pg-body{
+		background-color: rgba(21, 179, 158, 0.31);
+		margin-top: 1px;
+	}
+
+	.exp-name{
+		color: rgba(236, 178, 35, 0.74);
+		text-align: center;
+	}
+
+	.about-det {
+		font-size: 2rem;
+		color: #5a0404;
+	}
+
+	.exp-detail{
+		font-size: 1rem;
+		color: #968c8c;
+		padding: 1rem;
+	}
+
+	.card-exp{
+		margin-bottom: 2rem;
+	}
 
 
 

@@ -68,7 +68,7 @@
                         if (isNear) {
 
                             var row = $("<div class='row'>");
-                            var card = $("<div class='card w-100 mx-2 my-1' style='width: 20rem;'>");
+                            var card = $("<div class='card w-100 mx-2 my-1 resultsUser' style='width: 20rem;'>");
                             var cardBody = $("<div class='card-body p-1'>");
                             var img = $("<img class='card-img-top profilePhoto mr-auto'>");
                             var anchor = $("<a class='btn btn-primary contact'>");

@@ -19,35 +19,37 @@
 
 	$("#btnSignUp").on('click', function() {
 	    // console.log("hello");
-	    var email = txtEmail2.val().trim();
-	    var pass = txtPassword2.val().trim();
-	    var auth = firebase.auth();
+	    // var email = txtEmail2.val().trim();
+	    // var pass = txtPassword2.val().trim();
+	    // var auth = firebase.auth();
 
-	    var email2 = email;
+	    // var email2 = email;
 
 	    // sing up
-	   auth.createUserWithEmailAndPassword(email, pass).then(function(user){
+	   // auth.createUserWithEmailAndPassword(email, pass).then(function(user){
 
-	     // create a new Node
-		    database.ref('/Users/' + user.uid).set({
+	   //   // create a new Node
+		  //   database.ref('/Users/' + user.uid).set({
 
-		        'email': email2,
-		        'full address': "",
-		        'lat' : 23,
-		        'lng' : 23,
-		        'display name' : "",
-		        'city' : "",
-		        'zipCode' : '',
-		        'photoURL' : '',
-		        'Moover' : false , //this bolean is for determining whether the user is a mover or not
-		        'chat' : [1,2,3],
-		        'Full name' : 'everything',
-		    })
+		  //       'email': email2,
+		  //       'full address': "",
+		  //       'lat' : 23,
+		  //       'lng' : 23,
+		  //       'display name' : "",
+		  //       'city' : "",
+		  //       'zipCode' : '',
+		  //       'photoURL' : '',
+		  //       'Moover' : false , //this bolean is for determining whether the user is a mover or not
+		  //       'chat' : [1,2,3],
+		  //       'Full name' : 'everything',
+		  //   })
 
-	   }).catch(function(error) {
-	      console.log(error.code);
-	      console.log(error.message);
-	   });
+	   // }).catch(function(error) {
+	   //    console.log(error.code);
+	   //    console.log(error.message);
+	   // });
+
+	   location.href = "profile.html";
 
 	   $("#signUpModal").modal("hide");
 	   
@@ -83,10 +85,12 @@
 
 	    if (firebaseUser) {
 	        $("#logOut-btn").css("display" , "block");
+	        $("#profile").css("display","block");
 	        $("#logIn-btn").css("display" , "none");
 	    } else {
 	        console.log('not logged in');
 	        $("#logOut-btn").css("display" , "none");
+	        $("#profile").css("display","none");
 	        $("#logIn-btn").css("display" , "block");
 	    }
 
