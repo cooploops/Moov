@@ -1,53 +1,12 @@
 // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCsJJyoocEMnWy96UEDk4AJiLNWl3y64KI",
-    authDomain: "moov-7f456.firebaseapp.com",
-    databaseURL: "https://moov-7f456.firebaseio.com",
-    projectId: "moov-7f456",
-    storageBucket: "moov-7f456.appspot.com",
-    messagingSenderId: "26403369152"
-  };
-
-  firebase.initializeApp(config);
 
  var database = firebase.database();
 
  var txtEmail2 = $("#txtEmail2");
  var txtPassword2 = $("#txtPassword2");
 
-// function signUp(){
 
 	$("#btnSignUp").on('click', function() {
-	    // console.log("hello");
-	    // var email = txtEmail2.val().trim();
-	    // var pass = txtPassword2.val().trim();
-	    // var auth = firebase.auth();
-
-	    // var email2 = email;
-
-	    // sing up
-	   // auth.createUserWithEmailAndPassword(email, pass).then(function(user){
-
-	   //   // create a new Node
-		  //   database.ref('/Users/' + user.uid).set({
-
-		  //       'email': email2,
-		  //       'full address': "",
-		  //       'lat' : 23,
-		  //       'lng' : 23,
-		  //       'display name' : "",
-		  //       'city' : "",
-		  //       'zipCode' : '',
-		  //       'photoURL' : '',
-		  //       'Moover' : false , //this bolean is for determining whether the user is a mover or not
-		  //       'chat' : [1,2,3],
-		  //       'Full name' : 'everything',
-		  //   })
-
-	   // }).catch(function(error) {
-	   //    console.log(error.code);
-	   //    console.log(error.message);
-	   // });
 
 	   location.href = "profile.html";
 
@@ -55,9 +14,7 @@
 	   
 	});
 
-// };
 
-// function logIn(){
 
 	var txtEmail1 = $("#txtEmail1");
  	var txtPassword1 = $("#txtPassword1");
@@ -103,11 +60,11 @@
 	    		database.ref('/Users/' + firebaseUser.uid).set({
 			        'email': firebaseUser.email,
 			        'full address': "",
-			        'display name' : "",
+			        'display name' : firebaseUser.displayName,
 			        'city' : "",
 			        'zipCode' : '',
 			        'photoURL' : '',
-			        'Moover' : false //this bolean is for determining whether the user is a mover or not
+			        'Moover' : 'on' //this bolean is for determining whether the user is a mover or not
 		  		});
 
 	    	}
@@ -198,14 +155,3 @@ function facebookSignIn(){
     });
 }
 
-//This is repeatetive since signout works for both email/password signup and facebook sign up.
-
-// function facebookSignout() {
-//    firebase.auth().signOut()
-   
-//    .then(function() {
-//       console.log('Signout successful!')
-//    }, function(error) {
-//       console.log('Signout failed')
-//    });
-// }

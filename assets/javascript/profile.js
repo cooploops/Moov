@@ -1,32 +1,6 @@
-// Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCsJJyoocEMnWy96UEDk4AJiLNWl3y64KI",
-    authDomain: "moov-7f456.firebaseapp.com",
-    databaseURL: "https://moov-7f456.firebaseio.com",
-    projectId: "moov-7f456",
-    storageBucket: "moov-7f456.appspot.com",
-    messagingSenderId: "26403369152"
-  };
-
-  firebase.initializeApp(config);
-
   var database = firebase.database();
 
-  // var crUser;
-
-  // firebase.auth().onAuthStateChanged(function(firebaseUser){
-
-  // 	console.log(firebaseUser.uid);
-  // 	crUser = firebaseUser.uid;
-
-  // });
-
-
-  // database.ref('/Users/' + crUser.uid).once("value").then( function(snapShot){
-
-  // 	$("#userName").text(snapShot.val()["Full Name"]);
-
-  // })
+  var userUID;
 
   $("#saveInfo").on('click', function(event){
 
@@ -35,6 +9,7 @@
 
 		  	var email = $("#inputEmail").val().trim();
 			var pass = $("#inputPassword").val().trim();
+
 			var auth = firebase.auth();
 
 			var name = $("#inputName").val().trim();
@@ -43,17 +18,20 @@
 		  	var zipCode = $("#inputZip").val().trim();
 		  	var state = $("#inputState").val().trim();
 		  	var isMoov = $("#isMoov").val().trim();
+		  	var txtDes = $("#txtDes").val().trim();
 
 		  	var fullAddress = address + "," + city + " " + state + "," + zipCode;
 
-		  	var latLng = geocodeAddress(fullAddress);
+		  	initMap(fullAddress).then(function(curLocation){
 
-		  	latLng.then( function(curLocation){
+		  		console.log(curLocation.lat);
 
 		  		auth.createUserWithEmailAndPassword(email, pass).then( function(user){
 
+		  		userUID = user.uid;
+
 			     // create a new Node
-				    database.ref('/Users/' + user.uid).set({
+				    database.ref('/Users/' + userUID).set({
 
 				        'email': email,
 				        'full address': fullAddress,
@@ -65,39 +43,29 @@
 				        'photoURL' : '',
 				        'Moover' : isMoov, //this bolean is for determining whether the user is a mover or not
 				        'chat' : [1,2,3],
+				        'description' : txtDes,
+				        
 				    })
 
 				}).catch(function(error) {
 			      console.log(error.code);
 			      console.log(error.message);
 
-			})
+				}).then(function() {
 
-				
-			}).then( function(){
-				location.href = "index.html";
-			})
+					window.location.href = "index.html";
 
-			
+				});
+		  	})
+	});
 
-  	});
 
-  // 	console.log(crUser);
 
-  // 	database.ref('/Users/' + crUder.uid).update({
-	 //    'Full address': fullAdrees,
-	 //    'display name' : name,
-	 //    'city' : city,
-	 //    'zipCode' : zipCode,
-	 //    'photoURL' : '',
-	 //    'lat' : latLng.lat,
-	 //    'lng' : latLng.lng,
-	 //    'Moover' : isMoov //this bolean is for determining whether the user is a mover or not
-  // 	})
-  // })
+    function initMap(address) {
 
-    function geocodeAddress(address) {
+    	console.log(address);
     	geocoder = new google.maps.Geocoder();
+
         return new Promise(function(resolve, reject) {
             geocoder.geocode({ 'address': address }, function(results, status) {
                 if (status == "OK") {
@@ -114,7 +82,3 @@
             });
         });
     }
-
-
-
-  
