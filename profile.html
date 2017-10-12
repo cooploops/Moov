@@ -24,13 +24,11 @@
                 <li class="nav-item">
                     <a class="nav-link" id="help" href="#"><i class="fa fa-lg fa-question-circle" aria-hidden="true"></i>&nbsp; Help</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="logIn-btn" href="#"><i class="fa fa-lg fa-user-circle-o" aria-hidden="true"></i>&nbsp; Log In</a>
-                </li>
             </ul>
         </div>
     </nav>
     <div class="container mt-3">
+
         <div class="row profileUserAddress mb-2">
             <div class="col-12">
                 <form>
@@ -122,6 +120,7 @@
                             <input type="text" class="form-control" id="inputZip">
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="form-check">
                             <label class="form-check-label">
@@ -129,10 +128,18 @@
                             </label>
                         </div>
                     </div>
+                  
+                     <div class="form-group">
+                        <div class="form-check">
+                            <label class="form-check-label">Write a short description of Yourself</label>
+                            <br>
+                            <textarea id="txtDes" rows="15" cols="50"></textarea>
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn submit" id="saveInfo">Save</button>
+
                 </form>
-                <!-- <div class="col-5">
-                </div> -->
             </div>
             <div class="row profileFormChat mt-3">
                 <div class="col-7">
@@ -149,8 +156,9 @@
     </footer>
 </body>
 
+<script type="text/javascript" src="assets/javascript/database.js"></script>
 <script type="text/javascript" src="assets/javascript/profile.js"></script>
 <script type="text/javascript" src="assets/javascript/Auth.js"></script>
-<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoYCrsZAGAKToAbKePx7vnrKvSmJ6zhHE&libraries=places&callback=initMap"></script>
+<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoYCrsZAGAKToAbKePx7vnrKvSmJ6zhHE&libraries=places"></script>
 
 </html>
