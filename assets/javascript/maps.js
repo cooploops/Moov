@@ -49,6 +49,8 @@
                         locations.push({
                             position: { lat: child.val().lat, lng: child.val().lng },
                             displayName: child.val()["display name"],
+                            fullAddress: child.val()["full address"],
+                            desc: child.val().description,
                             photo: child.val().photoURL,
                             email: child.val().email,
                             id: child.ref.path.W[1]
@@ -61,7 +63,7 @@
 
                     locations.forEach(function(element, i) {
 
-                        let isNear = arePointsNear(element.position, curLocations, 15)
+                        let isNear = arePointsNear(element.position, curLocations, 5)
 
                         console.log(isNear)
 
@@ -73,16 +75,29 @@
                             var img = $("<img class='card-img-top profilePhoto mr-auto'>");
                             var anchor = $("<a class='btn contact'>");
                             var h4 = $("<h4 class='card-title'>");
+                            var h5 = $("<h5>");
                             var h6 = $("<h6>");
+                            var p = $("<p>");
 
                             row.append(card.append(cardBody.append(img.attr("src", element.photo).attr("alt", "Card image cap"))
-                                .append(anchor.attr("data-key", element.id).text("Contact")).append(h4.attr("id", "profileName").text(element.displayName)).append(h6.attr("id", "profileEmail").text(element.email))));
+                                .append(anchor.attr("data-key", element.id).text("Contact")).append(h4.attr("id", "profileName").text(element.displayName))
+                                .append(h5.addClass("profileContactInfo").text(element.fullAddress)).append(h6.addClass("profileContactInfo").text(element.email))
+                                .append(p.addClass("profileContactInfo").text(element.desc))));
 
                             $(".resultsField").append(row);
+
+                            // var contentString = "<div><h4>" + element.displayName +
+                            //                     "</h4>";
 
                             var marker = new google.maps.Marker({
                                 position: element.position,
                                 map: map
+                            });
+
+                            google.maps.event.addListener(marker, "click", function(event) {
+                                infoWindow.setContent("<div><h5>" + element.displayName + "</h5><br>" + 
+                                    "<h6>" + element.fullAddress + "</h6></div>");
+                                infoWindow.open(map, marker);
                             });
 
                             bounds.extend(element.position);
