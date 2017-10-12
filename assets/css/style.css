@@ -233,6 +233,10 @@ Can take out if group wants. Can be edited using jQuery plugin, not installed ye
   opacity : 1;
 }
 
+#emailModal{
+	display:none;
+}
+
 /*weather*/
 #highTemp {
 	color: #dc434b;
