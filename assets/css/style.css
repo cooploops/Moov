@@ -287,7 +287,7 @@ footer {
 		height:8rem;
 		width:8rem;
 		margin-bottom:20px;
-		border-color: white 1px;
+		border: white solid 1px;
 		position: absolute;
 		margin-top: 5rem;
 		margin-left: 7rem;
@@ -331,13 +331,16 @@ footer {
 		font-size: 1rem;
 		color: #968c8c;
 		padding: 1rem;
+		margin-bottom: 1rem;
 	}
 
 	.card-exp{
 		margin-bottom: 2rem;
 	}
 
-
+	.exp-footer{
+		padding: 1rem;
+	}
 
 
 
