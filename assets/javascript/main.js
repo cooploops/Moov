@@ -2,6 +2,12 @@ var database = firebase.database();
 
 window.onload = function () {
 
+	//this is the button for Modal
+	$(document).on('click',"#logIn-btn", function(){
+    	$("#signUpModal").modal("show");
+	});
+
+
 	$(".submit").on("click", function() {
 
 		localStorage.clear();
@@ -22,9 +28,9 @@ window.onload = function () {
 		console.log("hit");
 		console.log($(this));
 		console.log($(this)[0].parentNode.children[2].innerText);
-		console.log($(this)[0].parentNode.children[3].innerText);
+		console.log($(this)[0].parentNode.children[4].innerText);
 		var name = $(this)[0].parentNode.children[2].innerText;
-		var email = $(this)[0].parentNode.children[3].innerText;
+		var email = $(this)[0].parentNode.children[4].innerText;
 		$("#recipient-name").val(email);
 		$("#emailModalLabel").text("New Message to " + name);
 		$("#emailModal").modal("show");
@@ -45,11 +51,6 @@ window.onload = function () {
 }
 
 
-//this is the button for Modal
-$("#logIn-btn").on('click' , function(){
-    $("#signUpModal").modal("show");
-});
 
-//button for contact on results page
 
 
