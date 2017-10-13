@@ -86,9 +86,6 @@
 
                             $(".resultsField").append(row);
 
-                            // var contentString = "<div><h4>" + element.displayName +
-                            //                     "</h4>";
-
                             var marker = new google.maps.Marker({
                                 position: element.position,
                                 map: map
