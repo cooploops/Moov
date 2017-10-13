@@ -35,19 +35,6 @@ window.onload = function () {
 		$("#emailModalLabel").text("New Message to " + name);
 		$("#emailModal").modal("show");
 		});
-
-	firebase.auth().onAuthStateChanged(function(firebaseUser) {
-    	database.ref('/Users/' + firebaseUser.uid).once("value").then( function(snapShot){
-        	$("#displayName").html(snapShot.val()["display name"]);
-        	$("#fullAdress").html(snapShot.val()["full address"]);
-        	$("#eMail").html(snapShot.val().email);
-        	$("#desc").html(snapShot.val().description);
-        	var profilePic = snapShot.val().photoURL;
-        	var imgPic = $("<img>");
-        	imgPic.attr("src", profilePic);
-        	$("#profilePicture").append(imgPic);
-    	}); 
-    });
 }
 
 

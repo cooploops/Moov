@@ -8,9 +8,9 @@
 
 	$("#btnSignUp").on('click', function() {
 
-	   location.href = "profile.html";
-
 	   $("#signUpModal").modal("hide");
+
+	   location.href = "SignUp.html";
 	   
 	});
 

@@ -1,84 +1,90 @@
-  var database = firebase.database();
 
-  var userUID;
+var database = firebase.database();
 
-  $("#saveInfo").on('click', function(event){
+var file;
 
-		  	event.preventDefault();
-
-
-		  	var email = $("#inputEmail").val().trim();
-			var pass = $("#inputPassword").val().trim();
-
-			var auth = firebase.auth();
-
-			var name = $("#inputName").val().trim();
-		  	var address = $("#inputAddress").val().trim();
-		  	var city = $("#inputCity").val().trim();
-		  	var zipCode = $("#inputZip").val().trim();
-		  	var state = $("#inputState").val().trim();
-		  	var isMoov = $("#isMoov").val().trim();
-		  	var txtDes = $("#txtDes").val().trim();
-
-		  	var fullAddress = address + "," + city + " " + state + "," + zipCode;
-
-		  	initMap(fullAddress).then(function(curLocation){
-
-		  		console.log(curLocation.lat);
-
-		  		auth.createUserWithEmailAndPassword(email, pass).then( function(user){
-
-		  		userUID = user.uid;
-
-			     // create a new Node
-				    database.ref('/Users/' + userUID).set({
-
-				        'email': email,
-				        'full address': fullAddress,
-				        'lat' : curLocation.lat,
-				        'lng' : curLocation.lng,
-				        'display name' : name,
-				        'city' : city,
-				        'zipCode' : zipCode,
-				        'photoURL' : '',
-				        'Moover' : isMoov, //this bolean is for determining whether the user is a mover or not
-				        'chat' : [1,2,3],
-				        'description' : txtDes,
-				        
-				    })
-
-				}).catch(function(error) {
-			      console.log(error.code);
-			      console.log(error.message);
-
-				}).then(function() {
-
-					window.location.href = "index.html";
-
-				});
-		  	})
-	});
+var Auth = firebase.auth();
 
 
+$("#uploadImg").on('change' , function(event){
 
-    function initMap(address) {
+	file = event.target.files[0];
 
-    	console.log(address);
-    	geocoder = new google.maps.Geocoder();
+	console.log(file.type);
 
-        return new Promise(function(resolve, reject) {
-            geocoder.geocode({ 'address': address }, function(results, status) {
-                if (status == "OK") {
-                    var currentLocation = {
-                        address: results[0].formatted_address,
-                        lat: results[0].geometry.location.lat(),
-                        lng: results[0].geometry.location.lng(),
-                    }
+	var typeName = determineImg(file.type);
 
-                    resolve(currentLocation);
-                } else {
-                    reject(status);
-                }
-            });
-        });
-    }
+
+	if(typeName === "image"){
+
+		var userUID = Auth.currentUser.uid;
+
+		var storageRef = firebase.storage().ref("/images/" + userUID + "/" + "profile.jpg");
+
+		storageRef.put(file).then( function(){
+
+			storageRef.getDownloadURL().then( function(url){
+
+			database.ref('/Users/' + userUID).update({
+				'photoURL' : url,
+			})
+
+	        urlP = url;
+	        $("#profilePicture").attr("src" , url);
+
+	   		}).catch( function(error){
+
+	    		console.log(error.code);
+	    		console.log(error.message);
+
+	    	});
+		})
+
+	}else{
+
+		$("#imgError").text("Please choose an image file");
+	}
+
+});
+
+function determineImg(type){
+
+	var arr = type.split('');
+
+	var arr2 = [];
+
+	for( var i=0; i < 5 ; i++){
+		arr2.push(arr[i]);
+	}
+
+	var typeName = arr2.join('');
+
+	return typeName;
+
+}
+
+firebase.auth().onAuthStateChanged(function(firebaseUser) {
+
+    	
+
+	    database.ref('/Users/' + firebaseUser.uid).once("value").then( function(snapShot){
+
+	        $("#displayName").html(snapShot.val()["display name"]);
+	        $("#fullAdress").html(snapShot.val()["full address"]);
+	        $("#eMail").html(snapShot.val().email);
+	        $("#desc").html(snapShot.val().description);
+
+	        var profilePic = snapShot.val().photoURL;
+
+	        console.log(profilePic);
+
+	        	// var imgPic = $("<img>");
+	        	// imgPic.attr("src", profilePic);
+	        if(profilePic !== ""){
+	        	$("#profilePicture").attr("src" , profilePic);
+	        }
+	        
+	    });
+
+    	
+});
