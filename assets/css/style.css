@@ -120,6 +120,7 @@ body {
 
 
 /*Results Page Styling*/
+
 .fa {
 	color: black;
 }
@@ -157,15 +158,16 @@ body {
 	padding:5px;
 	border:1px solid #846240;
 	border-radius:3px;
+
 }
 
 #profileName{
-	margin-top:0.3em;
-	margin-left:30%;
+	margin-top: 0.3em;
+	margin-left: 30%;
 }
 
-#profileEmail{
-	margin-left:30%;
+.profileContactInfo{
+	margin-left: 30%;
 }
 .contact{
 	float: right;
