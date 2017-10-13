@@ -8,6 +8,7 @@ html, body {
 	height: 100%;
 	width: 100%; 
 	margin: 0;
+	background-color: mintcream;
 }
 
 body {
@@ -79,17 +80,12 @@ body {
 	border-radius:3px;
 }
 
-.description{
-/*	background-color: #ef7cab;
-	border:1px solid mintcream;
-	border-radius:5px;*/
-}
-
 .signUp {
 	background-color: mintcream;
-	border-radius: 3px;
+	border-radius: 5px;
 	border:10px solid #2fae56;
 	font-family: 'Quicksand', sans-serif;
+	margin-bottom:5em;
 }
 
 .signUp a{
@@ -110,7 +106,7 @@ body {
 
 .aboutUs {
 	background-color: mintcream;
-	border-radius: 3px;
+	border-radius: 5px;
 	border:10px solid #2fae56;
 	font-family: 'Quicksand', sans-serif;
 }
@@ -121,9 +117,7 @@ body {
 	font-weight:bold;
 }
 
-footer{
-	color:#ef7cab;
-}
+
 
 /*Results Page Styling*/
 .fa {
@@ -138,9 +132,7 @@ footer{
 	font-family: 'Quicksand', sans-serif;
 	font-weight:bold;
 }
-#address {
-	/*width: 100%;*/
-}
+
 .results {
 	border: 10px solid #2fae56;
 	border-radius:5px;
@@ -159,12 +151,12 @@ footer{
 }
 
 .profilePhoto {
-	height: 170px;
-	width: 180px;
-	border-radius: 50%;
+	height: 140px;
+	width: 140px;
 	float: left;
-/*	padding-right: 1rem;
-	padding-bottom: 1rem;*/
+	padding:5px;
+	border:1px solid #846240;
+	border-radius:3px;
 }
 
 #profileName{
@@ -177,11 +169,11 @@ footer{
 }
 .contact{
 	float: right;
+	color: white !important;
 	background-color: #f49ac2;
 	border-color: #f49ac2;
 	font-family: 'Quicksand', sans-serif;
 	font-weight:bold;
-
 }
 
 .contact:hover{
@@ -196,41 +188,6 @@ footer{
     width: 100%;
     height: 400px;
     background-color: grey;
-}
-/*Star Rating System
-Can take out if group wants. Can be edited using jQuery plugin, not installed yet*/
-.starRating:not(old){
-  display        : inline-block;
-  width          : 7.5em;
-  height         : 1.5em;
-  overflow       : hidden;
-  vertical-align : bottom;
-}
-.starRating:not(old) > input{
-  margin-right : -100%;
-  opacity      : 0;
-}
-.starRating:not(old) > label{
-  display         : block;
-  float           : right;
-  position        : relative;
-  background      : url('../images/star-off.svg');
-  background-size : contain;
-}
-.starRating:not(old) > label:before{
-  content         : '';
-  display         : block;
-  width           : 1.5em;
-  height          : 1.5em;
-  background      : url('../images/star-on.svg');
-  background-size : contain;
-  opacity         : 0;
-  transition      : opacity 0.2s linear;
-}
-.starRating:not(old) > label:hover:before,
-.starRating:not(old) > label:hover ~ label:before,
-.starRating:not(:hover) > :checked ~ label:before{
-  opacity : 1;
 }
 
 #emailModal{
@@ -248,13 +205,21 @@ Can take out if group wants. Can be edited using jQuery plugin, not installed ye
 
 /*Sticky Footer*/
 footer {
-	position:relative;
-	bottom:0;
+	position:absolute;
+	margin-bottom:0;
+	bottom:0px;
 	left:0;
 	right:0;
 	height:5em;
 	font-family: 'Quicksand', sans-serif;
 	font-weight:bold;
+	color:#ef7cab;
+}
+/*need to change position when content is bigger than viewport to keep footer at bottom*/
+@media (max-width:771px){
+	footer{
+		position:relative;
+	}
 }
 
 .copyright {
@@ -277,6 +242,31 @@ footer {
     top: 8rem;
     border-color: green;
     border: solid 2px;
+}
+
+/*Profile Page*/
+
+#profilePicture{
+	border: 3px solid #2fae56;
+	border-radius:3px;
+}
+
+.profileAddress{
+	
+}
+
+.profileEmail{
+	
+}
+
+.profileDesc{
+
+}
+
+.realProfile {
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 900;
+	background-color: mintcream;
 }
 
 
