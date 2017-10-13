@@ -8,6 +8,7 @@ html, body {
 	height: 100%;
 	width: 100%; 
 	margin: 0;
+	background-color: mintcream;
 }
 
 body {
@@ -79,17 +80,12 @@ body {
 	border-radius:3px;
 }
 
-.description{
-/*	background-color: #ef7cab;
-	border:1px solid mintcream;
-	border-radius:5px;*/
-}
-
 .signUp {
 	background-color: mintcream;
-	border-radius: 3px;
+	border-radius: 5px;
 	border:10px solid #2fae56;
 	font-family: 'Quicksand', sans-serif;
+	margin-bottom:5em;
 }
 
 .signUp a{
@@ -110,7 +106,7 @@ body {
 
 .aboutUs {
 	background-color: mintcream;
-	border-radius: 3px;
+	border-radius: 5px;
 	border:10px solid #2fae56;
 	font-family: 'Quicksand', sans-serif;
 }
@@ -121,9 +117,7 @@ body {
 	font-weight:bold;
 }
 
-footer{
-	color:#ef7cab;
-}
+
 
 /*Results Page Styling*/
 
@@ -139,6 +133,7 @@ footer{
 	font-family: 'Quicksand', sans-serif;
 	font-weight:bold;
 }
+
 .results {
 	border: 10px solid #2fae56;
 	border-radius:5px;
@@ -157,10 +152,13 @@ footer{
 }
 
 .profilePhoto {
-	height: 170px;
-	width: 180px;
-	border-radius: 50%;
+	height: 140px;
+	width: 140px;
 	float: left;
+	padding:5px;
+	border:1px solid #846240;
+	border-radius:3px;
+
 }
 
 #profileName{
@@ -173,11 +171,11 @@ footer{
 }
 .contact{
 	float: right;
+	color: white !important;
 	background-color: #f49ac2;
 	border-color: #f49ac2;
 	font-family: 'Quicksand', sans-serif;
 	font-weight:bold;
-
 }
 
 .contact:hover{
@@ -209,13 +207,21 @@ footer{
 
 /*Sticky Footer*/
 footer {
-	position:relative;
-	bottom:0;
+	position:absolute;
+	margin-bottom:0;
+	bottom:0px;
 	left:0;
 	right:0;
 	height:5em;
 	font-family: 'Quicksand', sans-serif;
 	font-weight:bold;
+	color:#ef7cab;
+}
+/*need to change position when content is bigger than viewport to keep footer at bottom*/
+@media (max-width:771px){
+	footer{
+		position:relative;
+	}
 }
 
 .copyright {
@@ -238,6 +244,31 @@ footer {
     top: 8rem;
     border-color: green;
     border: solid 2px;
+}
+
+/*Profile Page*/
+
+#profilePicture{
+	border: 3px solid #2fae56;
+	border-radius:3px;
+}
+
+.profileAddress{
+	
+}
+
+.profileEmail{
+	
+}
+
+.profileDesc{
+
+}
+
+.realProfile {
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 900;
+	background-color: mintcream;
 }
 
 
