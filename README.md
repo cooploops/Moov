@@ -58,17 +58,86 @@ return Math.sqrt(dx * dx + dy * dy) <= km;
 
 ```
 
+### Using a node package to parse address, store particular pieces in local storage, and send in an AJAX call on next page
+In this app we used a new technology we hadn't used before, Node.js, to install a pre-built package that would allow us to easily parse a user's address [Parse Address Node Package] and grab the data we needed to perform an AJAX call to the [Weather Underground API]. We stored the data from the user's address into the client's local storage because it was small and we were only using it to grab the 5 day weather forecast for that zip code or city. This node package saved us many hours and headaches from creating a function ourselves to parse a user's address.
+
+```
+	$(".submit").on("click", function() {
+
+		localStorage.clear();
+
+		var searchAddress = $("#address").val().trim();
+
+		var parsed = parseAddress.parseLocation(searchAddress);
+
+		console.log(parsed);
+
+		localStorage.setItem("full_address", searchAddress);
+		localStorage.setItem("addressCity", parsed.city);
+		localStorage.setItem("addressZip", parsed.zip);
+        
+	});
+
+	weatherData.zipcode = localStorage.getItem("addressZip");
+	weatherData.city = localStorage.getItem("addressCity");
+	console.log(weatherData.city);
+	console.log(weatherData.zipcode);
+	if(weatherData.zipcode === "" && weatherData.city === ""){
+		console.log("zip code or city was not provided");
+	} else if(weatherData.zipcode != "" && weatherData.city === ""){
+		weatherData.location = weatherData.zipcode;
+		weatherData.genWeather();
+	} else if(weatherData.city != "" && weatherData.zipcode === ""){
+		weatherData.location = "CA/" + weatherData.city;
+		weatherData.genWeather();
+	} else if (weatherData.zipcode != "" && weatherData.city != ""){
+		weatherData.location = weatherData.zipcode;
+		weatherData.genWeather();
+	}
+
+	genWeather: function(){
+			var queryURL = 'https://api.wunderground.com/api/424faf8d8148f1a3/forecast10day/geolookup/conditions/q/' + weatherData.location + '.json'
+			$.ajax({
+			url: queryURL,
+			type: 'GET'
+		})
+		.done(function(response) {
+			// reset row to blank so it doesn't keep adding new rows
+			$(".forecast").html("");
+			// logging response and URL to make sure it works
+			console.log(response);
+			// simplify going through the object but shortening chains
+			var forecast = response.forecast.simpleforecast.forecastday;
+			var current = response.current_observation;
+			// create new row to hold weather information
+			var titleRow = $("<div> class='row align-items-start'>");
+			titleRow.html("<h4 class=text-center>"+response.location.city+" 5 Day Forecast</h4>");
+			$(".forecast").append(titleRow);
+			var weatherRow = $("<div class='row'>");
+			// data comes in array for each day so create array that pulls data for 5 days including today
+			for(i=0;i<5;i++){
+				var newCol = $("<div class='col dailyForecast text-center'>");
+				newCol.html("<h4>"+forecast[i].date.weekday_short+"</h4><br><img src='"+forecast[i].icon_url+"'><br><p>Conditions: "+forecast[i].conditions+"<br><span id='highTemp'>"+forecast[i].high.fahrenheit+"</span> | <span id='lowTemp'>"+forecast[i].low.fahrenheit)+"</span>";
+				weatherRow.append(newCol);
+			}
+			$(".forecast").append(weatherRow);
+
+```
+
 ## Built With
 + HTML
 + CSS
 + Javascript
 + jQuery
++ Node.js
 + [Bootstrap](https://getbootstrap.com/)
 + [Google Fonts](https://fonts.google.com/)
 + [Google Maps API](https://developers.google.com/maps/)
 + [Facebook API](https://developers.facebook.com/)
 + [Open Weather API](https://openweathermap.org/api)
 + [Firebase](https://firebase.google.com/)
++ [Parse Address Node Package](https://www.npmjs.com/package/parse-address)
++ [Weather Underground API](https://www.wunderground.com/weather/api/)
 
 ### Authors
 + [Alex Edward Ball](https://github.com/AlexEBall)
