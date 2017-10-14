@@ -2,9 +2,6 @@
 
  var database = firebase.database();
 
- var txtEmail2 = $("#txtEmail2");
- var txtPassword2 = $("#txtPassword2");
-
 
 	$("#btnSignUp").on('click', function() {
 
@@ -38,12 +35,42 @@
 	    $("#signUpModal").modal("hide");
 	});
 
-	firebase.auth().onAuthStateChanged(function(firebaseUser) {
+	firebase.auth().onAuthStateChanged( function(firebaseUser) {
+
+		console.log(firebaseUser);
 
 	    if (firebaseUser) {
 	        $("#logOut-btn").css("display" , "block");
 	        $("#profile").css("display","block");
 	        $("#logIn-btn").css("display" , "none");
+
+	     //    console.log(firebaseUser.uid);
+	    	// console.log(firebaseUser.photoURL);
+	    	// console.log(firebaseUser.)
+
+
+	        database.ref('/Users/' + firebaseUser.uid).once("value").then( function(snapShot){
+
+	    	console.log(snapShot.val());
+
+		    	if(!snapShot.val()){
+
+			    	database.ref('/Users/' + firebaseUser.uid).set({
+					       'email': firebaseUser.email,
+					       'full address': "",
+					       'display name' : firebaseUser.displayName,
+					       'city' : "",
+					       'zipCode' : '',
+					       'photoURL' : firebaseUser.photoURL,
+					       'Moover' : 'on' //this bolean is for determining whether the user is a mover or not
+				  	});
+
+				  	window.location.href = "SignUpFacebook.html";
+
+		    	}
+	    	})
+
+
 	    } else {
 	        console.log('not logged in');
 	        $("#logOut-btn").css("display" , "none");
@@ -51,38 +78,18 @@
 	        $("#logIn-btn").css("display" , "block");
 	    }
 
-	    database.ref('/Users/' + firebaseUser.uid).once("value").then( function(snapShot){
-
-	    	console.log(snapShot.val());
-
-	    	if(!snapShot.val()){
-
-	    		database.ref('/Users/' + firebaseUser.uid).set({
-			        'email': firebaseUser.email,
-			        'full address': "",
-			        'display name' : firebaseUser.displayName,
-			        'city' : "",
-			        'zipCode' : '',
-			        'photoURL' : '',
-			        'Moover' : 'on' //this bolean is for determining whether the user is a mover or not
-		  		});
-
-	    	}
-	    })
+	    
 	});
 
 	$("#facebookBtn").on('click' , function(){
 
-		facebookSignIn();
-
 		$("#signUpModal").modal("hide");
 
+		facebookSignIn();
+
+		
+
 	})
-
-// }
-
-
-// function logOut(){
 
 	$("#logOut-btn").on('click', function() {
 	    firebase.auth().signOut();
@@ -121,37 +128,34 @@ function facebookSignIn(){
 
     provider.addScope('user_friends');
 
-    firebase.auth().signInWithRedirect(provider);
+    firebase.auth().signInWithPopup(provider).then( function(result) {
 
-    firebase.auth().getRedirectResult().then( function(result) {
+    	 console.log(result.credential);
 
         if (result.credential) {
             // This gives you a Facebook Access Token. You can use it to access the Facebook API.
             var token = result.credential.accessToken;
             // ...
             //, {access_token : token}
-            FB.api("/me/friends", function(response) {
+            FB.api("/me/friends", {access_token : token}, function(response) {
                         console.log(response);
             });
         }
         // The signed-in user info.
         var userFB = result.user;
+
+        console.log(userFB);
+
         console.log(userFB.uid);
 
 
     }).catch(function(error) {
         // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
         // ...
-        console.log(errorCode);
-        console.log(errorMessage);
-        console.log(email);
-        console.log(credential);
+        console.log(error.code);
+        console.log(error.message);
+        console.log(error.email);
+        console.log(error.credential);
     });
 }
 
