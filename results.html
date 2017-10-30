@@ -4,9 +4,11 @@
 <head>
     <meta name=viewport content="width=device-width, initial-scale=1">
     <title>Moov Results</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lora:700|Quicksand" rel="stylesheet">
 </head>
@@ -52,96 +54,110 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg mb-4">
-        <a class="navbar-brand" href="index.html"><img src="assets/images/TJmoov_justhead.png" width="70" height="60" class="d-inline-block align-center" alt="Moov Logo">Moov</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link mr-auto" id="help" href="help.html"><i class="fa fa-lg fa-question-circle" aria-hidden="true"></i>&nbsp; How it Works</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="logIn-btn" href="#"><i class="fa fa-lg fa-user-circle-o" aria-hidden="true"></i>&nbsp; Log In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="logOut-btn" href="#"><i class="fa fa-lg fa-user-circle-o" aria-hidden="true"></i>&nbsp; Log Out</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="profile" href="profile.html"><i class="fa fa-lg fa-user-circle-o" aria-hidden="true"></i>&nbsp; Profile</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container">
-        <!-- Search bar with previous searched address, will have to be added via jQuery -->
-        <div class="row mb-2 bar">
-            <div class="form-group col-md-12 my-1 mx-2">
-                <label for="previouslyEnteredAddress">Entered Address</label>
-                <input class="form-control" type="text" placeholder="Entered Address (will add via jQuery)">
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top mb-4">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/images/TJmoov_justhead.png" width="70" height="60" class="d-inline-block align-center" alt="Moov Logo">Moov</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link mr-auto" id="help" href="help.html">
+                            <i class="fa fa-lg fa-question-circle" aria-hidden="true"></i>&nbsp; How it Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="logIn-btn" href="#">
+                            <i class="fa fa-lg fa-user-circle-o" aria-hidden="true"></i>&nbsp; Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="logOut-btn" href="#">
+                            <i class="fa fa-lg fa-user-circle-o" aria-hidden="true"></i>&nbsp; Log Out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile" href="profile.html">
+                            <i class="fa fa-lg fa-user-circle-o" aria-hidden="true"></i>&nbsp; Profile</a>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <div class="row results">
-            <!-- Result Profiles -->
-            <div class="col-md-8 resultsField">
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <!-- Search bar with previous searched address, will have to be added via jQuery -->
+            <div class="row mb-2 bar">
+                <div class="form-group col-md-12 my-1 mx-2">
+                    <label for="previouslyEnteredAddress">Entered Address</label>
+                    <input class="form-control" type="text" placeholder="Entered Address (will add via jQuery)">
+                </div>
             </div>
-            <!-- Result Map -->
-            <div class="col-md-4 mapField">
-                <div class="my-2" id="map"></div>
+            <div class="row results">
+                <!-- Result Profiles -->
+                <div class="col-md-8 resultsField">
+                </div>
+                <!-- Result Map -->
+                <div class="col-md-4 mapField">
+                    <div class="my-2" id="map"></div>
+                </div>
             </div>
-        </div>
-        <div class="row weather mt-3 mb-3">
-            <div class="forecast col-sm">
+            <div class="row weather mt-3 mb-3">
+                <div class="forecast col-sm">
+                </div>
             </div>
+            <footer class="row" style="position:relative">
+                <div class="col text-center align-self-end">
+                    <h4 class="copyright">© 2017 Moov</h4>
+                </div>
+            </footer>
         </div>
-        <footer class="row" style="position:relative">
-        <div class="col text-center align-self-end">
-            <h4 class="copyright">© 2017 Moov</h4>
-        </div>
-    </footer>
-    </div>
+    </main>
 
-        <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="emailModalLabel">New message</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="recipient-name" class="form-control-label">Recipient:</label>
-                                <input type="text" class="form-control" id="recipient-name">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="form-control-label">Message:</label>
-                                <textarea class="form-control" id="message-text"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary send">Send message</button>
-                    </div>
+    <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="emailModalLabel">New message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="form-control-label">Recipient:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary send">Send message</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script src="https://use.fontawesome.com/484506c304.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/484506c304.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
 
-        <script type="text/javascript" src="assets/javascript/database.js"></script>
-        <script type="text/javascript" src="assets/javascript/main.js"></script>
-        <script type="text/javascript" src="assets/javascript/Auth.js"></script>
-        <script type="text/javascript" src="assets/javascript/weather.js"></script>
-        <script type="text/javascript" src="assets/javascript/maps.js"></script>
+    <script type="text/javascript" src="assets/javascript/database.js"></script>
+    <script type="text/javascript" src="assets/javascript/main.js"></script>
+    <script type="text/javascript" src="assets/javascript/Auth.js"></script>
+    <script type="text/javascript" src="assets/javascript/weather.js"></script>
+    <script type="text/javascript" src="assets/javascript/maps.js"></script>
 
-        <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoYCrsZAGAKToAbKePx7vnrKvSmJ6zhHE&libraries=places&callback=initMap"></script>
+    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoYCrsZAGAKToAbKePx7vnrKvSmJ6zhHE&libraries=places&callback=initMap"></script>
 </body>
 
 </html>

@@ -8,11 +8,12 @@ html, body {
 	height: 100%;
 	width: 100%; 
 	margin: 0;
-	background-color: mintcream;
+	background-image: url("../images/cardboardTexture.jpg");
+	padding-top: 4rem;
 }
 
 body {
-	color: #846240;
+	color: black;
 }
 
 .container-fluid {
@@ -21,24 +22,26 @@ body {
 
 .navbar-brand {
 	font-family: 'Quicksand', sans-serif;
-	color:#ef7cab;
-	font-weight: bold;
+	color:#eb2678;
+	font-weight: bolder;
+	font-size: 25px;
 }
 
 .navbar-brand:hover {
 	font-family: 'Quicksand', sans-serif;
-	color:#d8709b;
-	font-weight: bold;
+	color:#4e152d;
+	font-weight: bolder;
 }
 
 .nav-link {
-	color:#ef7cab;
+	color:#eb2678;
 	font-family: 'Quicksand', sans-serif;
-	font-weight: bold;
+	font-weight: bolder;
+	font-size:20px;
 }
 
 .nav-link:hover{
-	color:#d8709b;
+	color:#4e152d;
 }
 
 .input-group {
@@ -48,14 +51,14 @@ body {
 }
 
 .submit {
-	background-color: #ef7cab;
-	border-color: #ef7cab;
+	background-color: #eb2678;
+	border-color: #eb2678;
 	color:white;
 }
 
 .submit:hover {
-	background-color: #d8709b;
-	border-color: #d8709b;
+	background-color: #4e152d;
+	border-color: #4e152d;
 	color:white;
 }
 
@@ -64,12 +67,12 @@ body {
 }
 
 #moovHeadline{
-	font-family: 'Lora', serif;
-	color: #ef7cab;
+	color: #eb2678;
 }
 
 #pMoov {
-	color:#ef7cab;
+	font-weight:700;
+	color:#eb2678;
 }
 
 #carousel{
@@ -81,22 +84,21 @@ body {
 }
 
 .signUp {
-	background-color: mintcream;
+	background-color:rgba(21, 179, 158, 0.31);
 	border-radius: 5px;
-	border:10px solid #2fae56;
 	font-family: 'Quicksand', sans-serif;
 	margin-bottom:5em;
 }
 
 .signUp a{
-	background-color: #ef7cab;
-	border-color: #ef7cab;
+	background-color: #eb2678;
+	border-color: #eb2678;
 	color: white;
 }
 
 .signUp a:hover{
-	background-color: #d8709b;
-	border-color: #d8709b;
+	background-color: #4e152d;
+	border-color: #4e152d;
 	color: white;
 }
 
@@ -105,14 +107,13 @@ body {
 }
 
 .aboutUs {
-	background-color: mintcream;
+	background-color:rgba(21, 179, 158, 0.31);
 	border-radius: 5px;
-	border:10px solid #2fae56;
 	font-family: 'Quicksand', sans-serif;
 }
 
 .aboutUs h4{
-	color:#ef7cab;
+	color:#eb2678;
 	font-family: 'Quicksand', sans-serif;
 	font-weight:bold;
 }
@@ -215,7 +216,7 @@ footer {
 	height:5em;
 	font-family: 'Quicksand', sans-serif;
 	font-weight:bold;
-	color:#ef7cab;
+	color:#eb2678;
 }
 /*need to change position when content is bigger than viewport to keep footer at bottom*/
 @media (max-width:771px){
@@ -249,8 +250,8 @@ footer {
 /*Profile Page*/
 
 #profilePicture{
-	border: 3px solid #2fae56;
-	border-radius:3px;
+	border: 3px solid black;
+	border-radius:5px;
 }
 
 .profileAddress{
@@ -268,7 +269,7 @@ footer {
 .realProfile {
 	font-family: 'Quicksand', sans-serif;
 	font-weight: 900;
-	background-color: mintcream;
+	background-color: rgba(21, 179, 158, 0.31);
 }
 
 
