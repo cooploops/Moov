@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Lora:700|Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Quicksand:400" rel="stylesheet">
     <script src="https://use.fontawesome.com/64d6d9874d.js"></script>
 </head>
 
 <body>    
-    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade mt-5" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -19,12 +19,20 @@
                 </div>
                 <div class="modal-body">
                     <section class="container">
-                        <div class="row">
-                                <input id="txtEmail1" type="email" placeholder="Email">
-                        </div>
-                        <div class="row">
-                            <input id="txtPassword1" type="password" placeholder="Password">
-                        </div>
+                        <form>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="txtEmail1" class="col-form-label">Email Address:</label>
+                                    <input id="txtEmail1" class="form-control" type="email" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="txtPassword1" class="col-form-label">Password:</label>
+                                    <input id="txtPassword1" class="form-control" type="password" placeholder="Password">
+                                </div>
+                            </div>
+                        </form>
                         <div class="row">
                             <button id="btnLogin" class="btn btn-action">Log in</button>
                         </div>
@@ -38,14 +46,11 @@
                         </div>
                         <div class="row">
                             <div class="div-col-12" style="border: 1px solid black; width: 200px; margin-top: 10px; margin-bottom: 10px;">
-
                             </div>
                         </div>
-
                         <div class="row">
                             <button id="facebookBtn" class="btn btn-secondary">Log in with Facebook</button>
                         </div>
-
                     </section>
                 </div>
                 <div class="modal-footer">
@@ -54,9 +59,8 @@
             </div>
         </div>
     </div>
-
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg mb-4">
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top">
         <a class="navbar-brand" href="index.html"><img src="assets/images/TJmoov_justhead.png" width="70" height="60" class="d-inline-block align-center" alt="Moov Logo">Moov</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
@@ -78,6 +82,8 @@
             </ul>
         </div>
     </nav>
+</header>
+<main>
     <div class="row justify-content-center">
         <div class="col-sm-6 mx-auto">
             <div class="input-group mx-auto">
@@ -104,25 +110,25 @@
         <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
     </div>
     <div class="description row p-4 mx-3 mt-3 justify-content-center">
-      <div class="signUp col-sm-7 pt-4 pb-2 text-center">
+      <div class="signUp col-lg-7 pt-4 pb-2 text-center">
         <h1><span id="moovHeadline">Moov</span> makes <span id="pMoov">Moov</span>ing easy!</h1>
         <h2>Sign up Today and get your first <span id="pMoov">Moov</span> free!</h2>
         <a class="mt-2 btn btn-lg" href="SignUp.html" role="button">Sign up</a>
       </div>
-      <div class="divider col-md-1">
+      <div class="divider col-lg-1">
       </div>
-      <div class="aboutUs col-md-3 pt-2 mb-5">
+      <div class="aboutUs col-lg-3 pt-2 mb-5">
         <h4>About us</h4>
         <p>Hate moving with a passion? Wish there was an easier, more friendly way to get your stuff from one place to another?</p>
         <p> So do we and that's why we created <span id="pMoov">Moov</span>. The app that let's you see who's near you and available to help out with <span id="pMoov">Moov</span>ing.</p>
       </div>
     </div>
+</main>
     <footer class="row" style="position:relative">
         <div class="col text-center align-self-end">
             <h4 class="copyright">© 2017 Moov</h4>
         </div>
     </footer>
-  </div>
     
 </body>
 

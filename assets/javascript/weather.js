@@ -1,15 +1,3 @@
-  // // Initialize Firebase
-  // var config = {
-  //   apiKey: "AIzaSyCsJJyoocEMnWy96UEDk4AJiLNWl3y64KI",
-  //   authDomain: "moov-7f456.firebaseapp.com",
-  //   databaseURL: "https://moov-7f456.firebaseio.com",
-  //   projectId: "moov-7f456",
-  //   storageBucket: "moov-7f456.appspot.com",
-  //   messagingSenderId: "26403369152"
-  // };
-  // firebase.initializeApp(config);
-
-
 	var weatherData ={
 		location:"",
 		zipcode:null,
@@ -41,7 +29,7 @@
 				weatherRow.append(newCol);
 			}
 			$(".forecast").append(weatherRow);
-
+			$(".weather").css({"background-color":"rgba(255,255,255,0.69)","border":"10px solid rgb(116,155,122)","border-radius":"5px"});
 			console.log(response);
 			console.log("success");
 		})
@@ -74,20 +62,4 @@
 		weatherData.genWeather();
 	}
 
-	// $("#getWeather").on("click", function(event){
-	// event.preventDefault();
-	// weatherData.zipcode = $("#zipCode").val().trim();
-	// weatherData.city = $("#city").val().trim();
-	// console.log(weatherData.city);
-	// console.log(weatherData.zipcode);
-	// if(weatherData.zipcode === "" && weatherData.city === ""){
-	// 	console.log("zip code or city was not provided");
-	// } else if(weatherData.zipcode != "" && weatherData.city === ""){
-	// 	weatherData.location = weatherData.zipcode;
-	// 	weatherData.genWeather();
-	// } else if(weatherData.city != "" && weatherData.zipcode === ""){
-	// 	weatherData.location = "CA/" + weatherData.city;
-	// 	weatherData.genWeather();
-	// }
-	// })
 	
