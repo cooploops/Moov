@@ -8,9 +8,9 @@ window.onload = function () {
 	});
 
 
-	$(".submit").on("click", function() {
+	$(".submit").on("click", function(e) {
 
-		localStorage.clear();
+		localStorage.removeItem("full_address","addressCity","addressZip");
 
 		var searchAddress = $("#address").val().trim();
 

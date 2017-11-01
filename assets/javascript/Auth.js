@@ -92,7 +92,8 @@
 	})
 
 	$("#logOut-btn").on('click', function() {
-	    firebase.auth().signOut();
+		firebase.auth().signOut();
+		window.location.href = "index.html";
 	    // $("#content").empty();
 	})
 // }
