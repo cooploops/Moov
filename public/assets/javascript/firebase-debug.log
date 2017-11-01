@@ -1,0 +1,36 @@
+[debug] [2017-10-31T21:39:29.943Z] ----------------------------------------------------------------------
+[debug] [2017-10-31T21:39:29.944Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\coopl\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-10-31T21:39:29.944Z] CLI Version:   3.12.0
+[debug] [2017-10-31T21:39:29.945Z] Platform:      win32
+[debug] [2017-10-31T21:39:29.945Z] Node Version:  v6.11.3
+[debug] [2017-10-31T21:39:29.945Z] Time:          Tue Oct 31 2017 14:39:29 GMT-0700 (Pacific Daylight Time)
+[debug] [2017-10-31T21:39:29.945Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-10-31T21:39:29.957Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-10-31T21:39:29.957Z] > authorizing via signed-in user
+[debug] [2017-10-31T21:39:29.958Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-10-31T21:39:29.959Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/-eAHdIbuQFxhHbtdbxP5WhptflfeJkeY2eoqOkP7UEw',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Oct 31 2017 14:39:29 GMT-0700 (Pacific Daylight Time)
+[debug] [2017-10-31T21:39:30.139Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-31T21:39:30.142Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/moov-7f456  
+ Tue Oct 31 2017 14:39:30 GMT-0700 (Pacific Daylight Time)
+[debug] [2017-10-31T21:39:30.769Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-31T21:39:30.769Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/moov-7f456/tokens  
+ Tue Oct 31 2017 14:39:30 GMT-0700 (Pacific Daylight Time)
+[debug] [2017-10-31T21:39:31.289Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\coopl\devWork\Moov\assets\javascript'...
+[info] 
+[debug] [2017-10-31T21:39:31.291Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/moov-7f456  
+ Tue Oct 31 2017 14:39:31 GMT-0700 (Pacific Daylight Time)
+[debug] [2017-10-31T21:39:31.794Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-31T21:39:31.794Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/26403369152/clients/_:getWebAppConfig  
+ Tue Oct 31 2017 14:39:31 GMT-0700 (Pacific Daylight Time)
+[debug] [2017-10-31T21:39:32.168Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+

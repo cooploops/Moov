@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>How It Works</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lora:700|Quicksand" rel="stylesheet">
+    <script src="https://use.fontawesome.com/64d6d9874d.js"></script>
+</head>
+
+<body>
+    <!-- the modal for sign up -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Log In / Sign Up</h5>
+                </div>
+                <div class="modal-body">
+                    <section class="container">
+                        <div class="row">
+                            <input id="txtEmail1" type="email" placeholder="Email">
+                        </div>
+                        <div class="row">
+                            <input id="txtPassword1" type="password" placeholder="Password">
+                        </div>
+                        <div class="row">
+                            <button id="btnLogin" class="btn btn-action">Log in</button>
+                        </div>
+                        <div class="row">
+                            <div class="div-col-12" style="border: 1px solid black; width: 200px; margin-top: 10px; margin-bottom: 10px;">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
+                        </div>
+                        <div class="row">
+                            <div class="div-col-12" style="border: 1px solid black; width: 200px; margin-top: 10px; margin-bottom: 10px;">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button id="facebookBtn" class="btn btn-secondary">Log in with Facebook</button>
+                        </div>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg fixed-top mb-4">
+            <a class="navbar-brand" href="index.html"><img src="assets/images/TJmoov_justhead.png" width="70" height="60" class="d-inline-block align-center" alt="Moov Logo">Moov</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" id="help" href="#"><i class="fa fa-lg fa-question-circle" aria-hidden="true"></i>&nbsp; How it Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="logIn-btn" href="#"><i class="fa fa-lg fa-user-circle-o" aria-hidden="true"></i>&nbsp; Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="logOut-btn" href="#"><i class="fa fa-lg fa-user-circle-o" aria-hidden="true"></i>&nbsp; Log Out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile" href="profile.html"><i class="fa fa-lg fa-user-circle-o" aria-hidden="true"></i>&nbsp; Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+        <br>
+        <div class="container about-pg">
+            <div class="jumbotron about-main-pg">
+                <h1 class="display-3 about-pg-title">How <span id="pMoov">Moov</span> Works</h1>
+                <hr class="my-2">
+                <div class="row my-2">
+                    <div class="media">
+                        <img class="d-flex mr-3 mb-1" src="assets/images/TJmoov.png" width="80" height="80" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h5 class="mt-0">1. Search</h5> Enter your full street address, city, state and zip code into the search bar. It helps us find Moovers near you!
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="media">
+                        <img class="d-flex mr-3 mb-1" src="assets/images/TJmoov.png" width="80" height="80" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h5 class="mt-0">2. Connect</h5> Look through our list of Moovers and connect with one! We provide Moover's names, contact information, and a description from each so you know a little about who you're contacting.
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="media">
+                        <img class="d-flex mr-3 mb-1" src="assets/images/TJmoov.png" width="80" height="80" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h5 class="mt-0">3. <span id="pMoov">Moov!</span></h5> Once you find some Moovers you like then setup a day to <span id="pMoov">Moov!</span> We provide a 5-day weather forecast as well to help facilitate you scheduling a good day to Moov.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="jumbotron about-main-pg-body">
+                <h1 class="">Upcoming Features</h1>
+                <div class="card-deck">
+                    <div class="card exp">
+                        <img class="card-img-top background" src="https://media1.giphy.com/media/ijEiXYEo9DBxm/200.webp#4-grid1" alt="facebook">
+                        <div class="card-block">
+                            <h4 class="card-title exp-name">Facebook Friends</h4>
+                            <p class="card-text exp-detail">Make finding Moovers even easier with Facebook. Use Moov in the future to see which of your nearby friends on Facebook are available to help you Moov in one location versus hunting them down one by one.</p>
+                        </div>
+                    </div>
+                    <div class="card exp">
+                        <img class="card-img-top background" src="http://lizfroment.com/wp-content/uploads/2017/06/venmo.gif" alt="Venmo">
+                        <div class="card-block">
+                            <h4 class="card-title exp-name">No Cash? No problem.</h4>
+                            <p class="card-text exp-detail">Not everyone carries cash. We know. That's why incorporating a trusted and commonly used payment application such as Venmo will allow you to reimburse Moovers through your digital wallet.</p>
+                        </div>
+                    </div>
+                    <div class="card exp">
+                        <img class="card-img-top background" src="https://cdn.dribbble.com/users/4908/screenshots/2657565/livechat-animation.gif" alt="chat">
+                        <div class="card-block">
+                            <h4 class="card-title exp-name">Live Chat</h4>
+                            <p class="card-text exp-detail">Need to Moov something real quick? No time to wait? With Live Chat you'll be able to message Moovers right away and find out who's available immediately.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="row" style="position:relative">
+                <div class="col text-center align-self-end">
+                    <h4 class="copyright">© 2017 Moov</h4>
+                </div>
+            </footer>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script type="text/javascript" src="assets/javascript/database.js"></script>
+<script type="text/javascript" src="assets/javascript/main.js"></script>
+<script type="text/javascript" src="assets/javascript/Auth.js"></script>
+
+</html>
