@@ -270,63 +270,137 @@ footer {
 
 /*Profile Page*/
 
-#profilePicture{
-	border: 3px solid black;
-	border-radius:5px;
+#profilePicture {
+	height: 27rem;
+	width: 27rem;
 }
 
-.profileAddress{
-	
+.captionBox {
+	padding-left: 1rem;
 }
 
-.profileEmail{
-	
+figure.profileBox {
+  font-family: 'Quicksand', sans-serif;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 380px;
+  max-width: 662px;
+  min-height: 470px;
+  width: 100%;
+  color: #000000;
+  background-color: rgba(21, 179, 158, 0.31);
+}
+figure.profileBox * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+figure.profileBox .image {
+  width: 50%;
+  overflow: hidden;
+  z-index: 1;
+  -webkit-transform: skewX(-15deg);
+  transform: skewX(-15deg);
+}
+figure.profileBox .image img {
+  position: relative;
+  display: block;
+  left: -15%;
+  z-index: 1;
+  -webkit-transform: skew(15deg);
+  transform: skew(15deg);
+}
+figure.profileBox:before {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 45%;
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-transform: skewX(-17deg);
+  transform: skewX(-17deg);
+  -webkit-box-shadow: 15px 0px 25px rgba(0, 0, 0, 0.7);
+  box-shadow: 15px 0px 25px rgba(0, 0, 0, 0.7);
+}
+figure.profileBox figcaption {
+  padding: 20px 30px 20px 20px;
+  position: absolute;
+  right: 0;
+  bottom: 6rem;
+  width: 50%;
+}
+figure.profileBox figcaption h2,
+figure.profileBox figcaption p {
+  margin: 0;
+  text-align: right;
+  padding: 10px 0;
+  width: 100%;
+}
+figure.profileBox figcaption h2 {
+  font-size: 1.3em;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+figure.profileBox figcaption p {
+  font-size: 0.9em;
+  opacity: 0.8;
 }
 
-.profileDesc{
+figure.profileBox .position {
+  position: absolute;
+  bottom: -25px;
+  width: 100%;
+  text-align: right;
+  padding: 15px 30px;
+  font-size: 0.9em;
+  opacity: 1;
+  font-style: italic;
+  color: #ffffff;
+  background: #000000;
+  background-color: #eb2678;
 
 }
-
-.realProfile {
-	font-family: 'Quicksand', sans-serif;
-	font-weight: 900;
-	background-color: rgba(21, 179, 158, 0.31);
+figure.profileBox .position input {
+	margin-right: 21rem;
+	display: inline-block;
 }
-
 
 /*Help page*/
 
-	.about-pg{
-		font-family: 'Quicksand', sans-serif;
-		font-weight: 900;
-	}
+.about-pg{
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 900;
+}
 
-	.background {
-		height: 10rem;
-	}
+.background {
+	height: 10rem;
+}
 
-	.about-main-pg{
-		background-color: rgba(241, 97, 10, 0.24);
-		margin-bottom: 0px;	
-	}
+.about-main-pg{
+	background-color: rgba(241, 97, 10, 0.24);
+	margin-bottom: 0px;	
+}
 
-	.about-main-pg-body{
-		background-color: rgba(21, 179, 158, 0.31);
-		margin-top: 1px;
-	}
+.about-main-pg-body{
+	background-color: rgba(21, 179, 158, 0.31);
+	margin-top: 1px;
+}
 
-	.exp-name{
-		margin-top:4rem;
-		color: #846240;
-		text-align: center;
-	}
+.exp-name{
+	margin-top:4rem;
+	color: #846240;
+	text-align: center;
+}
 
-	.exp-detail{
-		font-size: 1rem;
-		color: #968c8c;
-		padding: 1rem;
-		margin-bottom: 1rem;
-	}
+.exp-detail{
+	font-size: 1rem;
+	color: #968c8c;
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
 
 
 
