@@ -75,8 +75,14 @@
 
                             $(".resultsField").append(row);
 
+                            var cowHead = {
+                                url: "assets/images/TJmoov_justhead.png",
+                                scaledSize: new google.maps.Size(50, 50)
+                            }
+
                             var marker = new google.maps.Marker({
                                 position: element.position,
+                                icon: cowHead,
                                 map: map
                             });
 
